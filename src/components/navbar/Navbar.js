@@ -8,7 +8,7 @@ const { SubMenu } = Menu;
 
 const Navbar = () => {
   const [state, setState] = useState({
-    current: 'mail',
+    current: 'landing',
   })
   const { current } = state;
 
@@ -22,17 +22,17 @@ const Navbar = () => {
       <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" style={{
         borderBottom: "none"
       }}>
-        <Menu.Item key="mail">
+        <Menu.Item id="icon" key="landing">
           RideShare
         </Menu.Item>
       </Menu>
       <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" style={{
         borderBottom: "none"
       }}>
-        <Menu.Item className="menuItem" key="mail" icon={<MailOutlined />}>
-          Navigation One
+        <Menu.Item className="menuItem" key="about">
+          About
         </Menu.Item>
-        <SubMenu className="menuItem" key="SubMenu" icon={<SettingOutlined />} title="Navigation Three - Submenu">
+        <SubMenu className="menuItem" key="SubMenu" title="Navigation Three - Submenu">
           <Menu.ItemGroup title="Item 1">
             <Menu.Item key="setting:1">Option 1</Menu.Item>
             <Menu.Item key="setting:2">Option 2</Menu.Item>

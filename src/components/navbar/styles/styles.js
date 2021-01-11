@@ -14,7 +14,7 @@ export const StyledNavbar = styled.div`
     color: white;
   }
 
-  .menuItem:hover {
+  .menuItem:hover, .ant-menu-submenu-active {
     // border-top: 2px solid black;
     color: black;
     background-color: white;
@@ -23,10 +23,14 @@ export const StyledNavbar = styled.div`
 
   .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected {
     border-bottom: none;
-    color: white;
+    color: black;
   }
 
-  ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu {
+  .ant-menu-submenu-title:hover {
+    color: black;
+  }
+
+  .ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu {
     border-bottom: none;
   }
 
@@ -34,7 +38,8 @@ export const StyledNavbar = styled.div`
     color: white;
   }
 
-  // #icon {
-  //   border-top: none;
-  // }
+  #icon {
+    border-top: none;
+    color: white;
+  }
 `;
