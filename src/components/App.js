@@ -1,10 +1,14 @@
 import React from 'react';
 
 import Navbar from './navbar/Navbar';
+import Connection from './connection/Connection';
 
-const App = () => {
+const App = ({ cableApp }) => {
   return (
-    <Navbar />
+    <>
+      <Navbar />
+      <Connection cableApp={cableApp} />
+    </>
   )
 }
 
