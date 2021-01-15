@@ -1,4 +1,5 @@
 import React from 'react';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 import Navbar from './navbar/Navbar';
 import LandingPage from './landing/LandingPage';

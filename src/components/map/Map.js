@@ -1,41 +1,63 @@
-import React, {useState, useEffect, useRef } from 'react';
-import mapboxgl from 'mapbox-gl';
+import React, { useState, useEffect } from 'react';
+import ReactMapGL from 'react-map-gl';
+import { ActionCableConsumer } from 'react-actioncable-provider';
 
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
+// import { listLogEntries } from './API';
 
 const Map = () => {
-    const mapContainer = useRef();
-    const [state, setState] = useState({
-        lng: 5,
-        lat: 34,
-        zoom: 2
-        })
+    const [location, setLocation] = useState(null);
+    const [viewport, setViewport] = useState({
+        width: 400,
+        height: 400,
+        latitude: 29.749907,
+        longitude: -95.358421,
+        zoom: 8
+    });
 
-    useEffect(() => {
-        const map = new mapboxgl.Map({
-            container: mapContainer,
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [state.lng, state.lat],
-            zoom: state.zoom
-            });
+    // useEffect(() => {
+    //     const getLogEntries = async () => {
+    //         const logEntries = await listLogEntries();
+    //         console.log(logEntries)
+    //     }
+    //     getLogEntries();
+    // }, [])
 
-        map.on('move', () => {
-            setState({
-                lng: map.getCenter().lng.toFixed(4),
-                lat: map.getCenter().lat.toFixed(4),
-                zoom: map.getZoom().toFixed(2)
-            });
-        }) 
-    }, [])
-    
-        return (
-            <div>
-                <div className='sidebarStyle'>
-                    <div>Longitude: {state.lng} | Latitude: {state.lat} | Zoom: {state.zoom}</div>
-                </div>
-                <div ref={mapContainer} className='mapContainer' />
-            </div>
-        )
+    // useEffect(() => {
+    //     navigator.geolocation.watchPosition(data => {
+    //         console.log(data)
+    //         setLocation(prevState => {
+    //             if (prevState) {
+    //                 return [...prevState, { lat: data.coords.latitude, lon: data.coords.longitude }]
+    //             }
+    //             return [{ lat: data.coords.latitude, lon: data.coords.longitude }]
+    //         })
+    //     }, error => console.log(error), { enableHighAccuracy: true })
+    // }, [])
+    console.log(location)
+
+    const handleConnected = (message) => {
+        console.log('connected')
+    }
+
+    const handleReceived = (message) => {
+        console.log(message)
+    }
+
+    return (
+        <>
+            <ActionCableConsumer
+                channel={{ channel: "RoomChannel", user: { id: 5 } }}
+                onConnected={handleConnected}
+                onReceived={handleReceived}
+            >
+            </ActionCableConsumer>
+            <ReactMapGL
+                {...viewport}
+                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+                onViewportChange={nextViewport => setViewport(nextViewport)}
+            />
+        </>
+    );
 }
 
 export default Map;
