@@ -1,13 +1,15 @@
 import React from 'react';
 
 import Navbar from './navbar/Navbar';
+import LandingPage from './landing/LandingPage';
 import Connection from './connection/Connection';
 
 const App = ({ cableApp }) => {
   return (
     <>
       <Navbar />
-      <Connection cableApp={cableApp} />
+      <LandingPage />
+      {/* <Connection cableApp={cableApp} /> */}
     </>
   )
 }
