@@ -1,0 +1,2 @@
+export const MAPBOX_URL = "https://api.mapbox.com/geocoding/v5/mapbox.places";
+export const MAPBOX_SEARCH_PARAMS = ".json?access_token=";

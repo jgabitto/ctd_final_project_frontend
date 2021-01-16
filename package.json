@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "actioncable": "^5.2.4-4",
     "antd": "^4.10.2",
+    "lodash": "^4.17.20",
     "mapbox-gl": "^2.0.1",
     "react": "^17.0.1",
     "react-actioncable-provider": "^2.0.0",

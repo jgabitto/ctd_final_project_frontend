@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import ReactMapGL from 'react-map-gl';
-import { ActionCableConsumer } from 'react-actioncable-provider';
+import React, { useState, useContext, useEffect } from 'react';
+import ReactMapGL, { Marker } from 'react-map-gl';
+import { ActionCable } from 'react-actioncable-provider';
+import _ from 'lodash';
 
 // import { listLogEntries } from './API';
+import JourneyContext from '../contexts/JourneyContext';
 
 const Map = () => {
-    const [location, setLocation] = useState(null);
+    const [journey, dispatchJourney] = useContext(JourneyContext);
+    const [locations, setLocations] = useState([]);
+    const [currentLocation, setCurrentLocation] = useState(null);
     const [viewport, setViewport] = useState({
         width: 400,
         height: 400,
@@ -15,17 +19,18 @@ const Map = () => {
     });
 
     // useEffect(() => {
-    //     const getLogEntries = async () => {
-    //         const logEntries = await listLogEntries();
-    //         console.log(logEntries)
+    //     const getLocations = async () => {
+    //         const values = await listLogEntries();
+    //         console.log(values)
+    //         setLocations(values)
     //     }
-    //     getLogEntries();
+    //     getLocations();
     // }, [])
 
     // useEffect(() => {
     //     navigator.geolocation.watchPosition(data => {
     //         console.log(data)
-    //         setLocation(prevState => {
+    //         setCurrentLocation(prevState => {
     //             if (prevState) {
     //                 return [...prevState, { lat: data.coords.latitude, lon: data.coords.longitude }]
     //             }
@@ -33,7 +38,8 @@ const Map = () => {
     //         })
     //     }, error => console.log(error), { enableHighAccuracy: true })
     // }, [])
-    console.log(location)
+
+    console.log(journey)
 
     const handleConnected = (message) => {
         console.log('connected')
@@ -43,19 +49,37 @@ const Map = () => {
         console.log(message)
     }
 
+    const renderMarkers = () => {
+        return Object.keys(journey).map((key) => {
+            return (
+                <Marker
+                    key={journey[key].id}
+                    latitude={journey[key].latitude}
+                    longitude={journey[key].longitude}
+                    offsetLeft={-20}
+                    offsetTop={-10}
+                >
+                    <svg style={{ width: `calc(1vmin*${viewport.zoom})`, height: `calc(1vmin*${viewport.zoom})` }} viewBox="0 0 24 24" stroke={key === 'start' ? 'green' : 'red'} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </Marker>
+            )
+        })
+    }
+
     return (
         <>
-            <ActionCableConsumer
-                channel={{ channel: "RoomChannel", user: { id: 5 } }}
-                onConnected={handleConnected}
-                onReceived={handleReceived}
-            >
-            </ActionCableConsumer>
-            <ReactMapGL
-                {...viewport}
-                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-                onViewportChange={nextViewport => setViewport(nextViewport)}
-            />
+            {
+                !_.isEmpty(journey) ?
+                    <ReactMapGL
+                        {...viewport}
+                        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+                        onViewportChange={nextViewport => setViewport(nextViewport)}
+                    >
+                        {
+                            renderMarkers()
+                        }
+                    </ReactMapGL>
+                    : null
+            }
         </>
     );
 }
