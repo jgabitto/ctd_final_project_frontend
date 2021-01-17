@@ -1,11 +1,14 @@
 import React, { useState, useContext } from 'react';
-import { AutoComplete, Form } from 'antd';
+import { AutoComplete, Form, Input, Button } from 'antd';
+import { FlyToInterpolator } from 'react-map-gl';
+import Icon from '@ant-design/icons';
 import _ from 'lodash';
+import { easeCubic } from 'd3-ease';
 
-import { MAPBOX_SEARCH_PARAMS, MAPBOX_URL } from '../../../utils/constants/constants';
+import { MAPBOX_SEARCH_PARAMS, MAPBOX_GEOCODING_URL } from '../../../utils/constants/constants';
 import JourneyContext from '../../contexts/JourneyContext';
 
-const SearchBar = () => {
+const SearchBar = ({ viewport, setViewport }) => {
   const [journey, dispatchJourney] = useContext(JourneyContext);
   const [values, setValues] = useState([]);
   const [value, setValue] = useState('');
@@ -13,8 +16,9 @@ const SearchBar = () => {
 
   const onSearch = async (searchText) => {
     let cities;
+    console.log(searchText)
     if (searchText) {
-      const res = await fetch(`${MAPBOX_URL}/${searchText}${MAPBOX_SEARCH_PARAMS}${process.env.REACT_APP_MAPBOX_TOKEN}`)
+      const res = await fetch(`${MAPBOX_GEOCODING_URL}/${searchText}${MAPBOX_SEARCH_PARAMS}${process.env.REACT_APP_MAPBOX_TOKEN}`)
       const { features } = await res.json();
       cities = features.reduce((acc, curr) => [...acc, { id: curr.id, value: curr.place_name, longitude: curr.center[0], latitude: curr.center[1] }], [])
 
@@ -32,6 +36,16 @@ const SearchBar = () => {
       type: "start",
       payload: { field: "start", value: start },
     });
+    setViewport({
+      width: 400,
+      height: 400,
+      latitude: start.latitude,
+      longitude: start.longitude,
+      transitionDuration: 5000,
+      transitionInterpolator: new FlyToInterpolator(),
+      transitionEasing: easeCubic,
+      zoom: 8
+    })
   };
 
   const onEndSelect = (data) => {
@@ -40,6 +54,16 @@ const SearchBar = () => {
       type: "end",
       payload: { field: "end", value: end },
     });
+    setViewport({
+      width: 400,
+      height: 400,
+      latitude: end.latitude,
+      longitude: end.longitude,
+      transitionDuration: 5000,
+      transitionInterpolator: new FlyToInterpolator(),
+      transitionEasing: easeCubic,
+      zoom: 8
+    })
   };
 
   const onChange = (data) => {
@@ -67,6 +91,7 @@ const SearchBar = () => {
         <AutoComplete
           value={value}
           options={options}
+          allowClear={true}
           style={{
             width: 200,
           }}

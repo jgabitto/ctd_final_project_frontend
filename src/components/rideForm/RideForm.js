@@ -20,7 +20,7 @@ const tailLayout = {
   },
 };
 
-const RideForm = () => {
+const RideForm = ({ viewport, setViewport }) => {
 
   const onFinish = (values) => {
     console.log('Success:', values);
@@ -63,7 +63,7 @@ const RideForm = () => {
       >
         <Input.Password />
       </Form.Item> */}
-      <SearchBar />
+      <SearchBar viewport={viewport} setViewport={setViewport} />
       <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit">
           Submit
