@@ -9,10 +9,16 @@ import calcMidpoint from '../../utils/calcMidpoint';
 import JourneyContext from '../contexts/JourneyContext';
 import Directions from '../directions/Directions';
 
-const Map = ({ viewport, setViewport }) => {
+const Map = ({ viewport, setViewport, width, height }) => {
     const [journey, dispatchJourney] = useContext(JourneyContext);
     const [locations, setLocations] = useState([]);
     const [currentLocation, setCurrentLocation] = useState(null);
+
+    useEffect(() => {
+        setViewport(prevState => {
+            return { ...prevState, width, height };
+        })
+    }, [])
     // const [viewport, setViewport] = useState({
     //     width: 400,
     //     height: 400,
@@ -145,7 +151,7 @@ const Map = ({ viewport, setViewport }) => {
     return (
         <>
             {
-                !_.isEmpty(journey) ?
+                journey.start || journey.end ?
                     <ReactMapGL
                         {...viewport}
                         mapStyle="mapbox://styles/mapbox/streets-v9"
