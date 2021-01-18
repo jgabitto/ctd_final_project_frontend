@@ -65,16 +65,26 @@ const Map = ({ viewport, setViewport, width, height }) => {
 
     useEffect(() => {
         const getDirections = async () => {
+            let zoom;
             const url = encodeURI(`${journey.start.longitude},${journey.start.latitude};${journey.end.longitude},${journey.end.latitude}`);
             const data = await fetch(`${MAPBOX_DIRECTIONS_URL}/${url}${MAPBOX_DIRECTIONS_PARAMS}${process.env.REACT_APP_MAPBOX_TOKEN}`)
             const res = await data.json();
+            const distance = res.routes[0].distance * 0.00062;
             dispatchJourney({
                 type: "directions",
                 payload: { field: "directions", value: res },
             });
-            const midPoint = { ...calcMidpoint(journey.start.latitude, journey.start.longitude, journey.end.latitude, journey.end.longitude) }
+            const midPoint = {
+                ...calcMidpoint(journey.start.latitude, journey.start.longitude, journey.end.latitude, journey.end.longitude)
+            }
+
+            if (distance > 20) {
+                zoom = 8;
+            } else {
+                zoom = 11.5
+            }
             setViewport(prevState => {
-                return { ...prevState, ...midPoint, zoom: 11 }
+                return { ...prevState, ...midPoint, zoom }
             })
         }
 
@@ -112,7 +122,7 @@ const Map = ({ viewport, setViewport, width, height }) => {
                                     offsetLeft={-10}
                                     offsetTop={-25}
                                 >
-                                    <svg style={{ width: `24px`, height: `24px` }} viewBox="0 0 24 24" stroke={key === 'start' ? 'green' : 'red'} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    <svg style={{ width: `24px`, height: `24px` }} viewBox="0 0 24 24" stroke="black" strokeWidth="2" fill={key === 'start' ? 'green' : 'red'} strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                                 </Marker>
                                 <Popup
                                     key={`${journey[key].id}_popup`}
@@ -123,7 +133,7 @@ const Map = ({ viewport, setViewport, width, height }) => {
                                     offsetLeft={0}
                                     // style={{ width: `calc(1vmin*${viewport.zoom})`, height: `calc(1vmin*${viewport.zoom})` }}
                                     anchor="top" >
-                                    <div>{address[0]}</div>
+                                    <div><strong>{address[0]}</strong></div>
                                 </Popup>
                             </React.Fragment>
                             : null
@@ -163,10 +173,10 @@ const Map = ({ viewport, setViewport, width, height }) => {
                             <NavigationControl />
                         </div>
                         {
-                            renderMarkers()
+                            journey.directions ? renderDirections() : null
                         }
                         {
-                            journey.directions ? renderDirections() : null
+                            renderMarkers()
                         }
                     </ReactMapGL>
                     : null
