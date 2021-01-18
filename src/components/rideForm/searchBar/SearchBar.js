@@ -1,12 +1,21 @@
 import React, { useState, useContext } from 'react';
 import { AutoComplete, Form, Input, Button } from 'antd';
 import { FlyToInterpolator } from 'react-map-gl';
-import Icon from '@ant-design/icons';
+import { CloseOutlined } from '@ant-design/icons';
 import _ from 'lodash';
 import { easeCubic } from 'd3-ease';
 
 import { MAPBOX_SEARCH_PARAMS, MAPBOX_GEOCODING_URL } from '../../../utils/constants/constants';
 import JourneyContext from '../../contexts/JourneyContext';
+
+const suffix = (
+  <CloseOutlined
+    style={{
+      fontSize: 16,
+      color: '#1890ff',
+    }}
+  />
+);
 
 const SearchBar = ({ viewport, setViewport }) => {
   const [journey, dispatchJourney] = useContext(JourneyContext);
@@ -16,7 +25,6 @@ const SearchBar = ({ viewport, setViewport }) => {
 
   const onSearch = async (searchText) => {
     let cities;
-    console.log(searchText)
     if (searchText) {
       const res = await fetch(`${MAPBOX_GEOCODING_URL}/${searchText}${MAPBOX_SEARCH_PARAMS}${process.env.REACT_APP_MAPBOX_TOKEN}`)
       const { features } = await res.json();
@@ -36,6 +44,7 @@ const SearchBar = ({ viewport, setViewport }) => {
       type: "start",
       payload: { field: "start", value: start },
     });
+    setOptions(null);
     setViewport({
       width: 400,
       height: 400,
@@ -54,6 +63,7 @@ const SearchBar = ({ viewport, setViewport }) => {
       type: "end",
       payload: { field: "end", value: end },
     });
+    setOptions(null);
     setViewport({
       width: 400,
       height: 400,
@@ -66,43 +76,72 @@ const SearchBar = ({ viewport, setViewport }) => {
     })
   };
 
-  const onChange = (data) => {
-    setValue(data);
+  const onChangeStart = (data) => {
+    setValue(prevState => {
+      return { ...prevState, start: data };
+    });
   };
+
+  const onChangeEnd = (data) => {
+    setValue(prevState => {
+      return { ...prevState, end: data };
+    });
+  };
+
+  const clearInput = (e) => {
+    if (e === 'start') {
+      dispatchJourney({ type: "start", payload: { field: "start", value: null } })
+      setValue(prevState => {
+        console.log(prevState)
+        return { ...prevState, start: "" };
+      });
+    } else {
+      dispatchJourney({ type: "end", payload: { field: "end", value: null } })
+      setValue(prevState => {
+        console.log(prevState)
+        return { ...prevState, end: "" };
+      });
+    }
+
+  }
 
   return (
     <>
       <Form.Item>
         <AutoComplete
+          value={value.start}
           options={options}
-          allowClear={true}
           style={{
             width: 200,
           }}
           onSelect={onStartSelect}
           onSearch={_.debounce(onSearch, 500)}
+          onChange={onChangeStart}
           placeholder="Enter a pickup location"
           filterOption={(inputValue, option) =>
             option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
           }
-        />
+        >
+          <Input id="start" suffix={<Button style={{ color: 'black' }} type="link" onClick={() => clearInput('start')}><CloseOutlined /></Button>} />
+        </AutoComplete>
       </Form.Item>
       <Form.Item>
         <AutoComplete
-          value={value}
+          value={value.end}
           options={options}
-          allowClear={true}
           style={{
             width: 200,
           }}
           onSelect={onEndSelect}
           onSearch={_.debounce(onSearch, 500)}
-          onChange={onChange}
+          onChange={onChangeEnd}
           placeholder="Enter destination"
           filterOption={(inputValue, option) =>
             option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
           }
-        />
+        >
+          <Input suffix={<Button style={{ color: 'black' }} type="link" onClick={() => clearInput('end')}><CloseOutlined /></Button>} />
+        </AutoComplete>
       </Form.Item>
     </>
   );

@@ -20,7 +20,7 @@ const tailLayout = {
   },
 };
 
-const RideForm = ({ viewport, setViewport }) => {
+const RideForm = ({ viewport, setViewport, history }) => {
 
   const onFinish = (values) => {
     console.log('Success:', values);
@@ -65,8 +65,13 @@ const RideForm = ({ viewport, setViewport }) => {
       </Form.Item> */}
       <SearchBar viewport={viewport} setViewport={setViewport} />
       <Form.Item {...tailLayout}>
+        <Button type="primary" htmlType="submit" onClick={() => history.push('/request')}>
+          Request now
+        </Button>
+      </Form.Item>
+      <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit">
-          Submit
+          Schedule for later
         </Button>
       </Form.Item>
     </Form>

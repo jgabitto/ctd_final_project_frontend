@@ -15,12 +15,12 @@ const reducerJourneyInfo = (state, action) => {
   switch (action.type) {
     case ACTIONS_JOURNEY_INFO.SET_START:
       if (state.start && !action.payload.value) {
-        return { ...state, [action.payload.field]: null };
+        return { ...state, [action.payload.field]: null, directions: null };
       }
       return { ...state, [action.payload.field]: action.payload.value };
     case ACTIONS_JOURNEY_INFO.SET_END:
       if (state.end && !action.payload.value) {
-        return { ...state, [action.payload.field]: null };
+        return { ...state, [action.payload.field]: null, directions: null };
       }
       return { ...state, [action.payload.field]: action.payload.value };
     case ACTIONS_JOURNEY_INFO.SET_DIRECTIONS:

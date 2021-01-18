@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 // import { listLogEntries } from './API';
 import { MAPBOX_DIRECTIONS_URL, MAPBOX_DIRECTIONS_PARAMS } from '../../utils/constants/constants';
+import calcMidpoint from '../../utils/calcMidpoint';
 import JourneyContext from '../contexts/JourneyContext';
 // import PolylineOverlay from '../directions/Directions';
 import Directions from '../directions/Directions';
@@ -66,8 +67,15 @@ const Map = ({ viewport, setViewport }) => {
                 type: "directions",
                 payload: { field: "directions", value: res },
             });
+            console.log(calcMidpoint(journey.start.latitude, journey.start.longitude, journey.end.latitude, journey.end.longitude));
+            const midPoint = { ...calcMidpoint(journey.start.latitude, journey.start.longitude, journey.end.latitude, journey.end.longitude) }
+            setViewport(prevState => {
+                return { ...prevState, ...midPoint, zoom: 11 }
+            })
         }
-        if (journey.hasOwnProperty('start') && journey.hasOwnProperty('end')) {
+
+
+        if ((journey.hasOwnProperty('start') && journey.start) && (journey.hasOwnProperty('end') && journey.end)) {
             getDirections();
         }
     }, [journey.start, journey.end])
@@ -85,13 +93,13 @@ const Map = ({ viewport, setViewport }) => {
     const renderMarkers = () => {
         let address;
         return Object.keys(journey).map((key) => {
-            if (key === 'start' || key === 'end') {
+            if ((key === 'start' && journey.start) || (key === 'end' && journey.end)) {
                 address = journey[key].value.split(',');
             }
             return (
                 <>
                     {
-                        key === 'start' || key === 'end' ?
+                        (key === 'start' && journey.start) || (key === 'end' && journey.end) ?
                             <React.Fragment key={journey[key].id}>
                                 <Marker
                                     key={`${journey[key].id}_marker`}
