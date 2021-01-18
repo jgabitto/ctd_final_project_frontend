@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import * as ROUTES from '../utils/constants/routes';
-import RequestPage from './requestRide/RequestPage';
+import RequestPage from './requestPage/RequestPage';
 import LandingPage from './landing/LandingPage';
 import Connection from './connection/Connection';
 import { JourneyStore } from './contexts/JourneyContext';

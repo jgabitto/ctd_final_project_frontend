@@ -154,6 +154,7 @@ const Map = ({ viewport, setViewport, width, height }) => {
                 journey.start || journey.end ?
                     <ReactMapGL
                         {...viewport}
+                        style={{ position: 'absolute' }}
                         mapStyle="mapbox://styles/mapbox/streets-v9"
                         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
                         onViewportChange={nextViewport => setViewport(nextViewport)}

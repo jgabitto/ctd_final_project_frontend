@@ -65,7 +65,7 @@ const RideForm = ({ viewport, setViewport, history }) => {
       </Form.Item> */}
       <SearchBar viewport={viewport} setViewport={setViewport} />
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit" onClick={() => history.push('/request')}>
+        <Button type="primary" onClick={() => history.push('/request')}>
           Request now
         </Button>
       </Form.Item>
