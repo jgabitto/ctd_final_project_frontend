@@ -7,7 +7,6 @@ import _ from 'lodash';
 import { MAPBOX_DIRECTIONS_URL, MAPBOX_DIRECTIONS_PARAMS } from '../../utils/constants/constants';
 import calcMidpoint from '../../utils/calcMidpoint';
 import JourneyContext from '../contexts/JourneyContext';
-// import PolylineOverlay from '../directions/Directions';
 import Directions from '../directions/Directions';
 
 const Map = ({ viewport, setViewport }) => {
@@ -67,7 +66,6 @@ const Map = ({ viewport, setViewport }) => {
                 type: "directions",
                 payload: { field: "directions", value: res },
             });
-            console.log(calcMidpoint(journey.start.latitude, journey.start.longitude, journey.end.latitude, journey.end.longitude));
             const midPoint = { ...calcMidpoint(journey.start.latitude, journey.start.longitude, journey.end.latitude, journey.end.longitude) }
             setViewport(prevState => {
                 return { ...prevState, ...midPoint, zoom: 11 }

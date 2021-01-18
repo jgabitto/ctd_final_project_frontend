@@ -53,7 +53,7 @@ const SearchBar = ({ viewport, setViewport }) => {
       transitionDuration: 5000,
       transitionInterpolator: new FlyToInterpolator(),
       transitionEasing: easeCubic,
-      zoom: 8
+      zoom: 13
     })
   };
 
@@ -72,7 +72,7 @@ const SearchBar = ({ viewport, setViewport }) => {
       transitionDuration: 5000,
       transitionInterpolator: new FlyToInterpolator(),
       transitionEasing: easeCubic,
-      zoom: 8
+      zoom: 13
     })
   };
 
