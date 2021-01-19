@@ -122,6 +122,24 @@ const Map = ({ viewport, setViewport, width, height }) => {
         })
     }
 
+    const renderDrivers = () => {
+        return journey.drivers.map((driver) => {
+            return (
+                <>
+                    <Marker
+                        key={`${driver.id}_marker`}
+                        latitude={driver.latitude}
+                        longitude={driver.longitude}
+                        offsetLeft={-10}
+                        offsetTop={-25}
+                    >
+                        <svg style={{ width: `24px`, height: `24px` }} viewBox="0 0 24 24" stroke="black" strokeWidth="2" fill={'none'} strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    </Marker>
+                </>
+            )
+        })
+    }
+
 
     const renderDirections = () => {
         if (journey.directions.hasOwnProperty('message')) {
@@ -156,6 +174,9 @@ const Map = ({ viewport, setViewport, width, height }) => {
                         }
                         {
                             renderMarkers()
+                        }
+                        {
+                            journey.drivers ? renderDrivers() : null
                         }
                     </ReactMapGL>
                     : null

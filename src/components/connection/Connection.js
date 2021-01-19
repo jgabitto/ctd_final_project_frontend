@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { ActionCableConsumer } from 'react-actioncable-provider';
 
-import ConnectionContext from '../contexts/ConnectionStore';
+import ConnectionContext from '../contexts/ConnectionContext';
+import JourneyContext from '../contexts/JourneyContext';
 
 const Connection = () => {
   const [CableApp, connection, setConnection] = useContext(ConnectionContext);
+  const [journey, dispatchJourney] = useContext(JourneyContext);
+
 
   useEffect(() => {
     let room;
@@ -18,6 +21,10 @@ const Connection = () => {
         },
         received(data) {
           console.log(data)
+          dispatchJourney({
+            type: "directions",
+            payload: { field: "drivers", value: data},
+          });
         }
       })
     }

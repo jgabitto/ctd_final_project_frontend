@@ -8,6 +8,7 @@ const ACTIONS_JOURNEY_INFO = {
   SET_START: 'start',
   SET_END: 'end',
   SET_DIRECTIONS: 'directions',
+  SET_DRIVERS: 'drivers',
   SET_ALL: "all",
 };
 
@@ -24,6 +25,8 @@ const reducerJourneyInfo = (state, action) => {
       }
       return { ...state, [action.payload.field]: action.payload.value };
     case ACTIONS_JOURNEY_INFO.SET_DIRECTIONS:
+      return { ...state, [action.payload.field]: action.payload.value };
+    case ACTIONS_JOURNEY_INFO.SET_DRIVERS:
       return { ...state, [action.payload.field]: action.payload.value };
     case ACTIONS_JOURNEY_INFO.SET_ALL:
       return { ...action.payload.value };
