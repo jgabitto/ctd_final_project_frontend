@@ -5,12 +5,13 @@ import Navbar from './navbar/Navbar';
 import LandingPage from './landing/LandingPage';
 import Connection from './connection/Connection';
 
-const App = ({ cableApp }) => {
+const App = ({ cable }) => {
+  console.log(cable)
   return (
     <>
       <Navbar />
-      <LandingPage />
-      {/* <Connection cableApp={cableApp} /> */}
+      <LandingPage cable={cable}/>
+      <Connection cableApp={cable} />
     </>
   )
 }

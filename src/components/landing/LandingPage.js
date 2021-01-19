@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 import Map from '../map/Map';
 
-const LandingPage = () => {
+const LandingPage = ({cable}) => {
+    console.log(cable)
+    useEffect(() => {
+        
+    }, [])
+
     return (
         <div>
             <Map />

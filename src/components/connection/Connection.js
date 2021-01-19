@@ -2,31 +2,34 @@ import React, { useState, useEffect, useContext } from 'react';
 import { ActionCableConsumer } from 'react-actioncable-provider';
 
 // import { ActionCableContext } from '../../index'
+import ConnectionContext from '../contexts/ConnectionStore';
 
 
-const Connection = ({ cableApp }) => {
+const Connection = () => {
   // const cable = useContext(ActionCableContext)
-  const [channel, setChannel] = useState(null)
+  // const [connection, setConnection] = useContext(ConnectionContext);
+  const [CableApp, connection, setConnection] = useContext(ConnectionContext);
 
-  const handleConnected = (message) => {
-    console.log('connected')
-  }
 
-  const handleReceived = (message) => {
-    console.log(message)
-  }
+  // const handleConnected = (message) => {
+  //   console.log('connected')
+  // }
 
-  return (
-    <ActionCableConsumer
-        channel={{channel: "RoomChannel", user: {id: 5}}}
-        onConnected={handleConnected}
-        onReceived={handleReceived}
-      >
-    <div>
-      {}
-    </div>
-    </ActionCableConsumer>
-  )
+  // const handleReceived = (message) => {
+  //   console.log(message)
+  // }
+
+  // return (
+  //   <ActionCableConsumer
+  //       channel={{channel: "RoomChannel", user: {id: 1}}}
+  //       onConnected={handleConnected}
+  //       onReceived={handleReceived}
+  //     >
+  //   <div>
+  //     {}
+  //   </div>
+  //   </ActionCableConsumer>
+  // )
 
   // useEffect(() => {
   //   console.log(cable)
@@ -41,34 +44,57 @@ const Connection = ({ cableApp }) => {
   //   }
   // }, [])
 
+    useEffect(() => {
+      console.log(CableApp)
+      let room;
+    if (CableApp) {
+      room = CableApp.cable.subscriptions.create({channel: "RoomChannel", id: 1}, {
+        connected() {
+          console.log("we're connected")
+      },
+        disconnected() {
+          console.log("we're disconnected")
+      },
+        received(data) {
+          console.log('hello')
+          console.log(data)
+        }
+      })
+    }
+    setConnection(room);
+    // setChannel(room);
+  }, [])
+
   // useEffect(() => {
-  //   console.log(cableApp)
-  //   cableApp.room = cableApp.cable.subscriptions.create(
-  //   {
-  //     channel: "RoomChannel",
-  //     id: 4
-  //   },
-  //   {
-  //     connected() {
-  //       console.log("we're connected")
-  //   }},
-  //   {
-  //     disconnected() {
-  //       console.log("we're disconnected")
-  //   }},
-  //   {
-  //     received(data) {
-  //       console.log('hello')
-  //       console.log(data)
-  //     }
-  //   })
+  //   if (connection) {
+  //     let room = connection.subscriptions.create({channel: "RoomChannel", id: 1}, {
+  //       connected() {
+  //         console.log("we're connected")
+  //     },
+  //       disconnected() {
+  //         console.log("we're disconnected")
+  //     },
+  //       received(data) {
+  //         console.log('hello')
+  //         console.log(data)
+  //       }
+  //     })
+  //   }
+  //   // setChannel(room);
   // }, [])
 
-  // return (
-  //   <div>
-  //     {}
-  //   </div>
-  // )
+  // useEffect(() => {
+  //   // if (channel) channel.send({id: 1, body: 'from  client'})
+  //   if (connection) connection.send({id: 1, body: 'from  client'})
+
+  // }, [])
+
+
+  return (
+    <div>
+      {}
+    </div>
+  )
 }
 
 export default Connection;
