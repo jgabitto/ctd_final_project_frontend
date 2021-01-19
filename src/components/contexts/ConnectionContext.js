@@ -5,6 +5,7 @@ const Context = React.createContext();
 
 export const ConnectionStore = ({ children }) => {
   const [connection, setConnection] = useState(null);
+  
   const CableApp = {}
   CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable');
 

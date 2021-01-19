@@ -174,10 +174,10 @@ const Map = ({ viewport, setViewport, width, height }) => {
                             journey.directions ? renderDirections() : null
                         }
                         {
-                            renderMarkers()
+                            journey.drivers ? renderDrivers() : null
                         }
                         {
-                            journey.driver ? renderDrivers() : null
+                            renderMarkers()
                         }
                     </ReactMapGL>
                     : null
