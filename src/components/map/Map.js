@@ -19,13 +19,6 @@ const Map = ({ viewport, setViewport, width, height }) => {
             return { ...prevState, width, height };
         })
     }, [])
-    // const [viewport, setViewport] = useState({
-    //     width: 400,
-    //     height: 400,
-    //     latitude: 29.749907,
-    //     longitude: -95.358421,
-    //     zoom: 8
-    // });
 
     // useEffect(() => {
     //     const getLocations = async () => {
@@ -48,20 +41,6 @@ const Map = ({ viewport, setViewport, width, height }) => {
     //     }, error => console.log(error), { enableHighAccuracy: true })
     // }, [])
 
-    // useEffect(() => {
-    //     const map = new mapboxgl.Map({
-    //         container: this.mapWrapper,
-    //         style: 'mapbox://styles/mapbox/streets-v10',
-    //         center: [-73.985664, 40.748514],
-    //         zoom: 12
-    //     });
-    //     const directions = new MapboxDirections({
-    //         accessToken: mapboxgl.accessToken,
-    //         unit: 'metric',
-    //         profile: 'mapbox/driving'
-    //     });
-    //     map.addControl(directions, 'top-left');
-    // }, [])
 
     useEffect(() => {
         const getDirections = async () => {
