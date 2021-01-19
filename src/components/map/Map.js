@@ -8,6 +8,7 @@ import { MAPBOX_DIRECTIONS_URL, MAPBOX_DIRECTIONS_PARAMS } from '../../utils/con
 import calcMidpoint from '../../utils/calcMidpoint';
 import JourneyContext from '../contexts/JourneyContext';
 import Directions from '../directions/Directions';
+import car from './img/car';
 
 const Map = ({ viewport, setViewport, width, height }) => {
     const [journey, dispatchJourney] = useContext(JourneyContext);
@@ -133,7 +134,7 @@ const Map = ({ viewport, setViewport, width, height }) => {
                         offsetLeft={-10}
                         offsetTop={-25}
                     >
-                        <svg style={{ width: `24px`, height: `24px` }} viewBox="0 0 24 24" stroke="black" strokeWidth="2" fill={'none'} strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <svg width="36px" height="36px" viewBox="0 0 24 24"><path d="M3 18v-5a2 2 0 0 1 2-2V8a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v3a2 2 0 0 1 2 2v5a2 2 0 1 1-4 0H7a2 2 0 1 1-4 0zM9 6a2 2 0 0 0-2 2v3h10V8a2 2 0 0 0-2-2H9zm-3 9a1 1 0 1 0 0-2a1 1 0 0 0 0 2zm12 0a1 1 0 1 0 0-2a1 1 0 0 0 0 2z" fill="black" /><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
                     </Marker>
                 </>
             )
@@ -173,10 +174,10 @@ const Map = ({ viewport, setViewport, width, height }) => {
                             journey.directions ? renderDirections() : null
                         }
                         {
-                            renderMarkers()
+                            journey.drivers ? renderDrivers() : null
                         }
                         {
-                            journey.drivers ? renderDrivers() : null
+                            renderMarkers()
                         }
                     </ReactMapGL>
                     : null
