@@ -4,7 +4,7 @@ import 'antd/dist/antd.css'
 import actionCable from 'actioncable';
 
 import App from './components/App';
-import { ConnectionStore } from './components/contexts/ConnectionStore';
+import { ConnectionStore } from './components/contexts/ConnectionContext';
 
 // const CableApp = {}
 

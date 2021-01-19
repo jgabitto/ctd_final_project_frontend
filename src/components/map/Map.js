@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import ReactMapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
+import { CarOutlined } from '@ant-design/icons';
 import { ActionCable } from 'react-actioncable-provider';
 import _ from 'lodash';
 
@@ -137,6 +138,24 @@ const Map = ({ viewport, setViewport, width, height }) => {
         )
     }
 
+    const renderDrivers = () => {
+        return journey.drivers.map((driver) => {
+            return (
+                <>
+                    <Marker
+                        key={`${driver.id}_marker`}
+                        latitude={driver.latitude}
+                        longitude={driver.longitude}
+                        offsetLeft={-10}
+                        offsetTop={-25}
+                    >
+                        <svg width="36px" height="36px" viewBox="0 0 24 24"><path d="M3 18v-5a2 2 0 0 1 2-2V8a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v3a2 2 0 0 1 2 2v5a2 2 0 1 1-4 0H7a2 2 0 1 1-4 0zM9 6a2 2 0 0 0-2 2v3h10V8a2 2 0 0 0-2-2H9zm-3 9a1 1 0 1 0 0-2a1 1 0 0 0 0 2zm12 0a1 1 0 1 0 0-2a1 1 0 0 0 0 2z" fill="black" /><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+                    </Marker>
+                </>
+            )
+        })
+    }
+
     return (
         <>
             {
@@ -156,6 +175,9 @@ const Map = ({ viewport, setViewport, width, height }) => {
                         }
                         {
                             renderMarkers()
+                        }
+                        {
+                            journey.driver ? renderDrivers() : null
                         }
                     </ReactMapGL>
                     : null

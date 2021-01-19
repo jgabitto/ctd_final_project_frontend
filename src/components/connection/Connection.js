@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { ActionCableConsumer } from 'react-actioncable-provider';
 
-import ConnectionContext from '../contexts/ConnectionStore';
+import ConnectionContext from '../contexts/ConnectionContext';
 
 const Connection = () => {
   const [CableApp, connection, setConnection] = useContext(ConnectionContext);
