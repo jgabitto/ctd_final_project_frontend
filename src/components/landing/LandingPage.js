@@ -1,17 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
+import { Row, Col } from 'antd';
 
+import ViewportContext from '../contexts/ViewportContext';
+import Navbar from '../navbar/Navbar';
+import RideForm from '../rideForm/RideForm';
 import Map from '../map/Map';
+import { StyledDiv } from './styles/styles';
 
-const LandingPage = ({cable}) => {
-    console.log(cable)
-    useEffect(() => {
-        
-    }, [])
+const LandingPage = ({ history }) => {
+    const [viewport, setViewport] = useContext(ViewportContext);
 
     return (
-        <div>
-            <Map />
-        </div>
+        <>
+            <Navbar />
+            <Row justify="center">
+                <Col span={8}>
+                    <RideForm history={history} viewport={viewport} setViewport={setViewport} />
+                </Col>
+                <Col span={8}>
+                    <Map viewport={viewport} setViewport={setViewport} />
+                </Col>
+            </Row>
+        </>
     )
 }
 

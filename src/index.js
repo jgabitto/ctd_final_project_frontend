@@ -4,7 +4,7 @@ import 'antd/dist/antd.css'
 import actionCable from 'actioncable';
 
 import App from './components/App';
-import {ConnectionStore} from './components/contexts/ConnectionStore';
+import {ConnectionStore} from './components/contexts/ConnectionContext';
 
 // const CableApp = {}
 
@@ -22,3 +22,8 @@ ReactDOM.render(<ConnectionStore><App /></ConnectionStore>, document.getElementB
 // const cable = ActionCable.createConsumer('ws://localhost:3000/cable');
 
 // ReactDOM.render(<ActionCableProvider cable={cable}><App /></ActionCableProvider>, document.getElementById("root"));
+
+// const cable = ActionCable.createConsumer('ws://localhost:3000/cable');
+
+// ReactDOM.render(<ActionCableProvider cable={cable}><App /></ActionCableProvider>, document.getElementById("root"));
+
