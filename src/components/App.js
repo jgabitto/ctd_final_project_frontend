@@ -6,6 +6,7 @@ import * as ROUTES from '../utils/constants/routes';
 import PrivateRoute from './routes/PrivateRoute';
 import Navbar from './navbar/Navbar';
 import Footer from './footer/Footer';
+import NotFound from './notFound/NotFound';
 import RequestPage from './requestPage/RequestPage';
 import LandingPage from './landing/LandingPage';
 import LoginPage from './loginPage/Login';
@@ -30,6 +31,7 @@ const App = ({ cable }) => {
                 <Route exact path={ROUTES.LANDING_PAGE} component={LandingPage} />
                 <Route exact path={ROUTES.REQUEST_PAGE} component={RequestPage} />
                 <Route exact path={ROUTES.LOGIN_PAGE} component={LoginPage} />
+                <Route component={NotFound} />
                 {/* <Route path={ROUTES.HOME_PAGE} component={} /> */}
                 {/* <Connection cableApp={cableApp} /> */}
               </Switch>
