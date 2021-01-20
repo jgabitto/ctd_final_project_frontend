@@ -5,7 +5,6 @@ import { SlackOutlined, GithubOutlined } from "@ant-design/icons";
 import { FooterBottom, Copyright, Icon, FooterLinks } from '../landing/styles/styles';
 
 const Footer = ({ location }) => {
-  console.log(location)
   return (
     <>
       <FooterBottom style={location.pathname === '/request' ? { position: 'absolute', bottom: 0 } : null}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, MenuOutlined } from '@ant-design/icons';
 
 const NonAuthNavbar = ({ open, setOpen }) => {
   return (
@@ -18,7 +18,7 @@ const NonAuthNavbar = ({ open, setOpen }) => {
             <li>
               <div className="sign-up"><a href="https://www.codethedream.org/apply-now/" target="_blank" rel="noopener noreferrer">Sign Up</a></div></li>
           </ul>
-          <i onClick={() => setOpen(!open)} className="fas fa-bars burger"><span>MENU</span></i>
+          <MenuOutlined onClick={() => setOpen(!open)} className="fas fa-bars burger" />
         </nav>
       </div>
     </>

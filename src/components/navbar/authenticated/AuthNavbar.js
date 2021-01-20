@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { MenuOutlined } from '@ant-design/icons';
+
+import UserContext from '../../contexts/UserContext';
 
 const AuthNavbar = ({ open, setOpen, userInfo }) => {
+  const [authToken, setAuthToken] = useContext(UserContext);
+
+  const logout = async () => {
+    setAuthToken(null)
+  }
+
   return (
     <>
       <div className='nav'>
@@ -11,12 +21,12 @@ const AuthNavbar = ({ open, setOpen, userInfo }) => {
               <div className="nav-item"><a href="https://www.codethedream.org/about/" target="_blank" rel="noopener noreferrer">About</a></div>
             </li>
             <li>
-              <div className="nav-item"><a href="https://www.codethedream.org/classes/" target="_blank" rel="noopener noreferrer">{userInfo.first_name}</a></div>
+              <div className="nav-item"><a href="https://www.codethedream.org/classes/" target="_blank" rel="noopener noreferrer">{userInfo ? userInfo.first_name : 'Home'}</a></div>
             </li>
             <li>
-              <div className="sign-up"><a href="https://www.codethedream.org/apply-now/" target="_blank" rel="noopener noreferrer">Log out</a></div></li>
+              <div className="sign-up"><Link to="#" onClick={logout}>Logout</Link></div></li>
           </ul>
-          <i onClick={() => setOpen(!open)} className="fas fa-bars burger"><span>MENU</span></i>
+          <MenuOutlined onClick={() => setOpen(!open)} className="fas fa-bars burger" />
         </nav>
       </div>
     </>

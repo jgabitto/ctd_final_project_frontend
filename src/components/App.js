@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import * as ROUTES from '../utils/constants/routes';
+import PrivateRoute from './routes/PrivateRoute';
 import Navbar from './navbar/Navbar';
 import Footer from './footer/Footer';
 import RequestPage from './requestPage/RequestPage';

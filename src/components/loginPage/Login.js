@@ -3,6 +3,7 @@ import { Button, Form, Input } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import * as ROUTES from '../../utils/constants/routes';
+import { LOGIN } from '../../utils/constants/constants';
 // import ForgotPassword from './ForgotPassword';
 import UserContext from '../contexts/UserContext';
 
@@ -37,7 +38,7 @@ const Login = ({ history }) => {
 
   async function fetchData(values) {
     try {
-      const response = await fetch('https://forked-student-dashboard.herokuapp.com/auth/login', {
+      const response = await fetch(LOGIN, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',
@@ -45,7 +46,7 @@ const Login = ({ history }) => {
         headers: { 'Content-Type': 'application/json' }
       });
       const message = await response.json();
-      const token = response.headers.get('Authentication');
+      const token = response.headers.get('Authorization');
 
       return { info: { ...message }, token };
     } catch (e) {
@@ -54,7 +55,7 @@ const Login = ({ history }) => {
   }
 
   return (
-    <div className=' col-4 contain'>
+    <div style={{ width: '100%' }} className=' col-4 contain'>
       <h1>
         Welcome to CTD's School
 				<span className='span-txt'>This website is your main hub for class materials for Code the Dream’s classes.</span>

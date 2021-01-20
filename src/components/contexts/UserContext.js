@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import _ from 'lodash';
 
+import { LOGIN } from '../../utils/constants/constants';
+
 const Context = React.createContext();
 
 export const UserStore = ({ children }) => {
-  const [cookies, setCookie] = useCookies(['auth_token']);
+  const [cookies, setCookie, removeCookie] = useCookies(['auth_token']);
   const [authToken, setAuthToken,] = useState(cookies['auth_token']);
   const [userInfo, setUserInfo] = useState(null);
 
@@ -16,10 +18,14 @@ export const UserStore = ({ children }) => {
     }
   }, [authToken])
 
+  if (!authToken && !_.isEmpty(cookies)) {
+    removeCookie('auth_token');
+  }
+
   useEffect(() => {
     if (!_.isEmpty(cookies)) {
       const getData = async () => {
-        const response = await fetch('https://forked-student-dashboard.herokuapp.com/user', {
+        const response = await fetch(LOGIN, {
           method: 'POST',
           mode: 'cors',
           credentials: 'include',
