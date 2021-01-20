@@ -7,7 +7,7 @@ export const ConnectionStore = ({ children }) => {
   const [connection, setConnection] = useState(null);
 
   const CableApp = {}
-  CableApp.cable = actionCable.createConsumer('wss://ctd-final-project.herokuapp.com/cable');
+  CableApp.cable = actionCable.createConsumer('wss://ctd-final-project.herokuapp.com');
   // CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable');
 
   return (
