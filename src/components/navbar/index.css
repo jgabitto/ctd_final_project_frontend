@@ -7,9 +7,9 @@ span {
   z-index: 1;
   position: relative;
   display: block;
-  width: 100%;
+  width: 35%;
   padding: 30px;
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   flex-flow: column;
   justify-content: center;

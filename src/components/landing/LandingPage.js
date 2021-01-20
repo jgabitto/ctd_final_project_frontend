@@ -6,7 +6,6 @@ import JourneyContext from '../contexts/JourneyContext';
 import Navbar from '../navbar/Navbar';
 import RideForm from './rideForm/RideForm';
 import Map from '../map/Map';
-import Footer from './footer/Footer';
 import { StyledDiv, Section, Main } from './styles/styles';
 
 const LandingPage = ({ history, location }) => {
@@ -43,14 +42,14 @@ const LandingPage = ({ history, location }) => {
     // )
     return (
         <>
-            <Navbar />
             {/* <Section> */}
             <Main>
                 <RideForm history={history} viewport={viewport} setViewport={setViewport} />
-                <div><Map location={location} viewport={viewport} setViewport={setViewport} /></div>
+                <div className="contain">
+                    <Map location={location} viewport={viewport} setViewport={setViewport} />
+                </div>
             </Main>
             {/* </Section> */}
-            <Footer />
         </>
     );
 }

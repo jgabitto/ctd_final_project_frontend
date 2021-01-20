@@ -56,10 +56,7 @@ const OrderForm = () => {
 
   return (
     <>
-      <Card title={title()} style={{ width: 300, position: 'absolute' }}>
-
-
-
+      <Card title={title()} style={{ width: 300, position: 'absolute', marginTop: '100px' }}>
       </Card>
     </>
   )

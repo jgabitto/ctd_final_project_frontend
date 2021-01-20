@@ -1,12 +1,14 @@
 import React from "react";
+import { withRouter } from 'react-router-dom';
 import { SlackOutlined, GithubOutlined } from "@ant-design/icons";
 
-import { FooterBottom, Copyright, Icon, FooterLinks } from '../styles/styles';
+import { FooterBottom, Copyright, Icon, FooterLinks } from '../landing/styles/styles';
 
-const Footer = () => {
+const Footer = ({ location }) => {
+  console.log(location)
   return (
     <>
-      <FooterBottom>
+      <FooterBottom style={location.pathname === '/request' ? { position: 'absolute', bottom: 0 } : null}>
         <Copyright>
           Copyright © Code the Dream · All Rights Reserved
                 </Copyright>
@@ -36,4 +38,4 @@ const Footer = () => {
     </>
   );
 };
-export default Footer;
+export default withRouter(Footer);

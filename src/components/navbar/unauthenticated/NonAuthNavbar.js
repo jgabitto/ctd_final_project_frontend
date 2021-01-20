@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { UserOutlined } from '@ant-design/icons';
 
 const NonAuthNavbar = ({ open, setOpen }) => {
@@ -12,7 +13,7 @@ const NonAuthNavbar = ({ open, setOpen }) => {
               <div className="nav-item"><a href="https://www.codethedream.org/about/" target="_blank" rel="noopener noreferrer">About</a></div>
             </li>
             <li>
-              <div className="nav-item"><a href="https://www.codethedream.org/classes/" target="_blank" rel="noopener noreferrer"><UserOutlined /> Log in</a></div>
+              <div className="nav-item"><Link to="/login" ><UserOutlined /> Log in</Link></div>
             </li>
             <li>
               <div className="sign-up"><a href="https://www.codethedream.org/apply-now/" target="_blank" rel="noopener noreferrer">Sign Up</a></div></li>
