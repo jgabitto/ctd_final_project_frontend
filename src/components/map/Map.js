@@ -10,7 +10,7 @@ import calcMidpoint from '../../utils/calcMidpoint';
 import JourneyContext from '../contexts/JourneyContext';
 import Directions from '../directions/Directions';
 
-const Map = ({ viewport, setViewport, width, height }) => {
+const Map = ({ viewport, setViewport, width, height, location }) => {
     const [journey, dispatchJourney] = useContext(JourneyContext);
     const [locations, setLocations] = useState([]);
     const [currentLocation, setCurrentLocation] = useState(null);
@@ -60,8 +60,10 @@ const Map = ({ viewport, setViewport, width, height }) => {
 
             if (distance > 20) {
                 zoom = 8;
+            } else if (distance > 6) {
+                zoom = 11.5;
             } else {
-                zoom = 11.5
+                zoom = 13;
             }
             setViewport(prevState => {
                 return { ...prevState, ...midPoint, zoom }
@@ -162,7 +164,7 @@ const Map = ({ viewport, setViewport, width, height }) => {
                 journey.start || journey.end ?
                     <ReactMapGL
                         {...viewport}
-                        style={{ position: 'absolute' }}
+                        style={location.pathname === '/request' ? { position: 'absolute' } : null}
                         mapStyle="mapbox://styles/mapbox/streets-v9"
                         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
                         onViewportChange={nextViewport => setViewport(nextViewport)}
@@ -171,7 +173,7 @@ const Map = ({ viewport, setViewport, width, height }) => {
                             <NavigationControl />
                         </div>
                         {
-                            journey.directions ? renderDirections() : null
+                            journey.start && journey.end && journey.directions ? renderDirections() : null
                         }
                         {
                             journey.drivers ? renderDrivers() : null

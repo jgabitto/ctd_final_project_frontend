@@ -33,6 +33,7 @@ const RideForm = ({ viewport, setViewport, history }) => {
   return (
     <Form
       {...layout}
+      className="loginForm"
       name="basic"
       initialValues={{
         remember: true,

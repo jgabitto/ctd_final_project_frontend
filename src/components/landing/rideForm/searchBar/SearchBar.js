@@ -5,8 +5,8 @@ import { CloseOutlined } from '@ant-design/icons';
 import _ from 'lodash';
 import { easeCubic } from 'd3-ease';
 
-import { MAPBOX_SEARCH_PARAMS, MAPBOX_GEOCODING_URL } from '../../../utils/constants/constants';
-import JourneyContext from '../../contexts/JourneyContext';
+import { MAPBOX_SEARCH_PARAMS, MAPBOX_GEOCODING_URL } from '../../../../utils/constants/constants';
+import JourneyContext from '../../../contexts/JourneyContext';
 
 const suffix = (
   <CloseOutlined
@@ -40,12 +40,14 @@ const SearchBar = ({ viewport, setViewport }) => {
 
   const onStartSelect = (data) => {
     const start = values.find(city => data === city.value)
+    console.log(start)
     dispatchJourney({
       type: "start",
       payload: { field: "start", value: start },
     });
     setOptions(null);
     setViewport({
+      ...viewport,
       width: 400,
       height: 400,
       latitude: start.latitude,
@@ -65,6 +67,7 @@ const SearchBar = ({ viewport, setViewport }) => {
     });
     setOptions(null);
     setViewport({
+      ...viewport,
       width: 400,
       height: 400,
       latitude: end.latitude,
