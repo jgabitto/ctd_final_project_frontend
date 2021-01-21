@@ -1,8 +1,7 @@
 span {
   font-family: 'Montserrat', sans-serif;
 }
-/* Content */
-/* Container */
+
 .contain {
   z-index: 1;
   position: relative;
@@ -42,7 +41,7 @@ span {
   text-align: center;
   color: #020609;
 }
-/* Sign Up Form */
+
 .form {
   margin: 0 auto;
   margin-top: 20px;
@@ -80,7 +79,7 @@ span {
 .login-form input {
   height: 30px;
 }
-/* Navigation */
+
 nav {
   z-index: 3;
   display: flex;
@@ -185,7 +184,7 @@ nav .burger span {
   font-weight: 500;
   padding-left: 4px;
 }
-/* Media Queries*/
+
 @media (min-width: 320px) and (max-width: 403px) {
 
   .form {
@@ -251,4 +250,8 @@ nav .burger span {
     padding: 25px;
     border-bottom: 1px solid #dfdfdf;
   }
+}
+
+.ant-card-body {
+  padding: 0;
 }

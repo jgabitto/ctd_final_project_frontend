@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { List, Avatar, Card } from 'antd';
+import { List, Avatar, Card, Button, Row, Col } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
 
 import JourneyContext from '../../contexts/JourneyContext';
-import { StyledP } from './styles/styles';
+import { StyledP, StyledButton } from './styles/styles';
 
 const data = [
   {
@@ -23,9 +23,12 @@ const data = [
 const urls =
 {
   'suv': 'https://d3i4yxtzktqr9n.cloudfront.net/hulk/522b1d9c18507374f9494b42f2b6fc3e.png',
+  'van': 'https://d3i4yxtzktqr9n.cloudfront.net/hulk/522b1d9c18507374f9494b42f2b6fc3e.png',
   'sports': 'https://d3i4yxtzktqr9n.cloudfront.net/hulk/855c2957609f0a7a333f9d4affc31e5b.png',
   'luxury': 'https://d3i4yxtzktqr9n.cloudfront.net/hulk/855c2957609f0a7a333f9d4affc31e5b.png',
-  'coupe': 'https://d3i4yxtzktqr9n.cloudfront.net/hulk/09e8f38cfd86e553f06a6dfd121aec0e.png'
+  'coupe': 'https://d3i4yxtzktqr9n.cloudfront.net/hulk/09e8f38cfd86e553f06a6dfd121aec0e.png',
+  'sedan': 'https://d3i4yxtzktqr9n.cloudfront.net/hulk/09e8f38cfd86e553f06a6dfd121aec0e.png',
+  'hatchback': 'https://d3i4yxtzktqr9n.cloudfront.net/hulk/09e8f38cfd86e553f06a6dfd121aec0e.png'
 }
 
 const OrderForm = () => {
@@ -74,7 +77,7 @@ const OrderForm = () => {
   console.log(drivers)
   return (
     <>
-      <Card title={title()} style={{ width: 300, position: 'absolute', marginTop: '100px' }}>
+      <Card title={title()} style={{ width: 400, position: 'absolute', marginTop: '100px', padding: 0 }}>
         {
           drivers ?
             <List
@@ -95,6 +98,16 @@ const OrderForm = () => {
               )}
             /> : null
         }
+        {/* <div style={{ height: '50px' }}><div style={}><Button>Hello</Button></div></div> */}
+        <Row>
+          <Col span={12} offset={6}>
+            {/* <div style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }}> */}
+            <div style={{ margin: '10px 0' }}>
+              <StyledButton className="">Request Rideshare</StyledButton>
+            </div>
+            {/* </div> */}
+          </Col>
+        </Row>
       </Card>
     </>
   )
