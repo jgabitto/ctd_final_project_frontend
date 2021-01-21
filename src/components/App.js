@@ -10,12 +10,12 @@ import NotFound from './notFound/NotFound';
 import RequestPage from './requestPage/RequestPage';
 import LandingPage from './landing/LandingPage';
 import LoginPage from './loginPage/Login';
+import Registration from './registerPage/Register';
 import Connection from './connection/Connection';
 import { ConnectionStore } from './contexts/ConnectionContext';
 import { UserStore } from './contexts/UserContext';
 import { JourneyStore } from './contexts/JourneyContext';
 import { ViewportStore } from './contexts/ViewportContext';
-import Login from './loginPage/Login';
 
 const App = ({ cable }) => {
   console.log(cable)
@@ -31,6 +31,7 @@ const App = ({ cable }) => {
                 <Route exact path={ROUTES.LANDING_PAGE} component={LandingPage} />
                 <Route exact path={ROUTES.REQUEST_PAGE} component={RequestPage} />
                 <Route exact path={ROUTES.LOGIN_PAGE} component={LoginPage} />
+                <Route exact path={ROUTES.REGISTER_PAGE} component={Registration} />
                 <Route component={NotFound} />
                 {/* <Route path={ROUTES.HOME_PAGE} component={} /> */}
                 {/* <Connection cableApp={cableApp} /> */}

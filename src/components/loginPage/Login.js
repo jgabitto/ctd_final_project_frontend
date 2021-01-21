@@ -55,11 +55,11 @@ const Login = ({ history }) => {
   }
 
   return (
-    <div style={{ width: '100%' }} className=' col-4 contain'>
-      <h1>
+    <div style={{ width: '100%', marginTop: '50px' }} className='col-4 contain'>
+      {/* <h1>
         Welcome to CTD's School
 				<span className='span-txt'>This website is your main hub for class materials for Code the Dream’s classes.</span>
-      </h1>
+      </h1> */}
 
       <div className='form'>
         <h2>Sign In</h2>
@@ -67,9 +67,9 @@ const Login = ({ history }) => {
           authToken ?
             <div>
               You are signed in
-				</div>
+				      </div>
             :
-            <div className='col-10 mx-auto'>
+            <>
               <Form
                 name='normal_login'
                 className='login-form'
@@ -120,7 +120,7 @@ const Login = ({ history }) => {
               <div align="center" style={{ color: "red" }}>
                 {loginState.error ? loginState.error : null}
               </div>
-            </div>
+            </>
         }
       </div>
     </div>

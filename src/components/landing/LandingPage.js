@@ -6,6 +6,7 @@ import JourneyContext from '../contexts/JourneyContext';
 import Navbar from '../navbar/Navbar';
 import RideForm from './rideForm/RideForm';
 import Map from '../map/Map';
+import LandingPageTabs from './tabs/LandingPageTabs';
 import { StyledDiv, Section, Main } from './styles/styles';
 
 const LandingPage = ({ history, location }) => {
@@ -44,6 +45,7 @@ const LandingPage = ({ history, location }) => {
         <>
             {/* <Section> */}
             <Main>
+                {/* <LandingPageTabs /> */}
                 <RideForm history={history} viewport={viewport} setViewport={setViewport} />
                 <div className="contain">
                     <Map location={location} viewport={viewport} setViewport={setViewport} />

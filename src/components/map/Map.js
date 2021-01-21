@@ -157,7 +157,7 @@ const Map = ({ viewport, setViewport, width, height, location }) => {
             )
         })
     }
-
+    console.log(location)
     return (
         <>
             {
@@ -178,7 +178,7 @@ const Map = ({ viewport, setViewport, width, height, location }) => {
                         {
                             renderMarkers()
                         }
-                        <div style={{ position: 'absolute', right: 0 }}>
+                        <div style={location.pathname === '/request' ? { position: 'absolute', right: '10px', top: '100px' } : { position: 'absolute', right: 0 }}>
                             <NavigationControl />
                         </div>
                     </ReactMapGL>

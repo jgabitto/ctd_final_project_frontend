@@ -16,7 +16,7 @@ const NonAuthNavbar = ({ open, setOpen }) => {
               <div className="nav-item"><Link to="/login" ><UserOutlined /> Log in</Link></div>
             </li>
             <li>
-              <div className="sign-up"><a href="https://www.codethedream.org/apply-now/" target="_blank" rel="noopener noreferrer">Sign Up</a></div></li>
+              <div className="sign-up"><Link to="/register" >Sign up</Link></div></li>
           </ul>
           <MenuOutlined onClick={() => setOpen(!open)} className="fas fa-bars burger" />
         </nav>

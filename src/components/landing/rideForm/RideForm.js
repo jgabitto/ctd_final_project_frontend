@@ -22,8 +22,6 @@ const RideForm = ({ viewport, setViewport, history }) => {
         </Space>
       </div>
     </div>
-
-
   );
 }
 

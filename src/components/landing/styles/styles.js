@@ -21,7 +21,7 @@ export const Section = styled.div`
 `;
 
 export const Main = styled.main`
-padding:150px 20px 0 20px;
+padding:100px 20px 0 20px;
   margin:0;
   min-height:100vh;
 	display: flex;
