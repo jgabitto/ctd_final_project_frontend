@@ -2,12 +2,12 @@ import React from "react";
 import { withRouter } from 'react-router-dom';
 import { SlackOutlined, GithubOutlined } from "@ant-design/icons";
 
-import { FooterBottom, Copyright, Icon, FooterLinks } from '../landing/styles/styles';
+import { FooterBottom, Copyright, Icon, FooterLinks } from '../../landingPage/styles/styles';
 
 const Footer = ({ location }) => {
   return (
     <>
-      <FooterBottom style={location.pathname === '/request' ? { position: 'absolute', bottom: 0 } : null}>
+      <FooterBottom style={location.pathname === '/request' ? { position: 'fixed', bottom: 0 } : null}>
         <Copyright>
           Copyright © Code the Dream · All Rights Reserved
                 </Copyright>

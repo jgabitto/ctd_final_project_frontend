@@ -3,12 +3,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import * as ROUTES from '../utils/constants/routes';
-import PrivateRoute from './routes/PrivateRoute';
-import Navbar from './navbar/Navbar';
-import Footer from './footer/Footer';
+import PrivateRoute from './shared/routes/PrivateRoute';
+import Navbar from './shared/navbar/Navbar';
+import Footer from './shared/footer/Footer';
 import NotFound from './notFound/NotFound';
 import RequestPage from './requestPage/RequestPage';
-import LandingPage from './landing/LandingPage';
+import LandingPage from './landingPage/LandingPage';
 import LoginPage from './loginPage/Login';
 import Registration from './registerPage/Register';
 import Connection from './connection/Connection';

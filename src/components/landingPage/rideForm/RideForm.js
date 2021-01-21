@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Button, Space } from 'antd';
 
 import SearchBar from './searchBar/SearchBar';
+import JourneyContext from '../../contexts/JourneyContext';
 
 
 const RideForm = ({ viewport, setViewport, history }) => {
+  const [journey, dispatchJourney] = useContext(JourneyContext);
+  const [disabled, setDisabled] = useState(false);
 
+  // const disable = () => {
+  //   setTimeout(setDisabled())
+  // }
 
   return (
     <div className='contain'>

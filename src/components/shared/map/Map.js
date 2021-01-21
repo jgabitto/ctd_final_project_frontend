@@ -5,9 +5,9 @@ import { ActionCable } from 'react-actioncable-provider';
 import _ from 'lodash';
 
 // import { listLogEntries } from './API';
-import { MAPBOX_DIRECTIONS_URL, MAPBOX_DIRECTIONS_PARAMS } from '../../utils/constants/constants';
-import calcMidpoint from '../../utils/calcMidpoint';
-import JourneyContext from '../contexts/JourneyContext';
+import { MAPBOX_DIRECTIONS_URL, MAPBOX_DIRECTIONS_PARAMS } from '../../../utils/constants/constants';
+import calcMidpoint from '../../../utils/calcMidpoint';
+import JourneyContext from '../../contexts/JourneyContext';
 import Directions from '../directions/Directions';
 
 const Map = ({ viewport, setViewport, width, height, location }) => {
@@ -62,6 +62,8 @@ const Map = ({ viewport, setViewport, width, height, location }) => {
                 zoom = 8;
             } else if (distance > 6) {
                 zoom = 11.5;
+            } else if (distance > 2) {
+                zoom = 12;
             } else {
                 zoom = 13;
             }

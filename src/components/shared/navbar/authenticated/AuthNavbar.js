@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { MenuOutlined } from '@ant-design/icons';
 
-import UserContext from '../../contexts/UserContext';
+import UserContext from '../../../contexts/UserContext';
 
 const AuthNavbar = ({ open, setOpen, userInfo }) => {
   const [authToken, setAuthToken] = useContext(UserContext);

@@ -3,9 +3,9 @@ import { Row, Col } from 'antd';
 
 import ViewportContext from '../contexts/ViewportContext';
 import JourneyContext from '../contexts/JourneyContext';
-import Navbar from '../navbar/Navbar';
+import Navbar from '../shared/navbar/Navbar';
 import RideForm from './rideForm/RideForm';
-import Map from '../map/Map';
+import Map from '../shared/map/Map';
 import LandingPageTabs from './tabs/LandingPageTabs';
 import { StyledDiv, Section, Main } from './styles/styles';
 

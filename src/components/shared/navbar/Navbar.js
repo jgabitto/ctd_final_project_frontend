@@ -3,10 +3,10 @@ import { Menu } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
 import { StyledNavbar } from './styles/styles';
-import UserContext from '../contexts/UserContext';
+import UserContext from '../../contexts/UserContext';
 import AuthNavbar from './authenticated/AuthNavbar';
 import NonAuthNavbar from './unauthenticated/NonAuthNavbar';
-import './index.css';
+import '../../index.css';
 
 const { SubMenu } = Menu;
 

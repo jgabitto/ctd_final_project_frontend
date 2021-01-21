@@ -52,7 +52,7 @@ const SearchBar = ({ viewport, setViewport }) => {
       height: 400,
       latitude: start.latitude,
       longitude: start.longitude,
-      transitionDuration: 5000,
+      transitionDuration: 2000,
       transitionInterpolator: new FlyToInterpolator(),
       transitionEasing: easeCubic,
       zoom: 13
@@ -72,7 +72,7 @@ const SearchBar = ({ viewport, setViewport }) => {
       height: 400,
       latitude: end.latitude,
       longitude: end.longitude,
-      transitionDuration: 5000,
+      transitionDuration: 2000,
       transitionInterpolator: new FlyToInterpolator(),
       transitionEasing: easeCubic,
       zoom: 13

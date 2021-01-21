@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from 'react';
 import JourneyContext from '../contexts/JourneyContext';
 import ViewportContext from '../contexts/ViewportContext';
 import ConnectionContext from '../contexts/ConnectionContext';
-import Map from '../map/Map';
+import Map from '../shared/map/Map';
 import OrderForm from './orderForm/OrderForm';
 
 const RequestPage = ({ location }) => {
