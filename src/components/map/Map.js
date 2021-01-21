@@ -169,9 +169,6 @@ const Map = ({ viewport, setViewport, width, height, location }) => {
                         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
                         onViewportChange={nextViewport => setViewport(nextViewport)}
                     >
-                        <div style={{ position: 'absolute', right: 0 }}>
-                            <NavigationControl />
-                        </div>
                         {
                             journey.start && journey.end && journey.directions ? renderDirections() : null
                         }
@@ -181,6 +178,9 @@ const Map = ({ viewport, setViewport, width, height, location }) => {
                         {
                             renderMarkers()
                         }
+                        <div style={{ position: 'absolute', right: 0 }}>
+                            <NavigationControl />
+                        </div>
                     </ReactMapGL>
                     : null
             }
