@@ -9,6 +9,7 @@ import Footer from './shared/footer/Footer';
 import AboutPage from './aboutPage/AboutPage';
 import NotFound from './notFound/NotFound';
 import RequestPage from './requestPage/RequestPage';
+import CarPage from './carPage/Car';
 import LandingPage from './landingPage/LandingPage';
 import LoginPage from './loginPage/Login';
 import TripsPage from './tripsPage/TripsPage';
@@ -31,11 +32,12 @@ const App = ({ cable }) => {
               <Connection />
               <Navbar />
               <Switch>
-                <Route exact path={ROUTES.LANDING_PAGE} component={LandingPage} />
+                <Route exact path={ROUTES.LANDING_PAGE} component={CarPage} />
                 <Route exact path={ROUTES.REQUEST_PAGE} component={RequestPage} />
                 <Route exact path={ROUTES.LOGIN_PAGE} component={LoginPage} />
                 <Route exact path={ROUTES.REGISTER_PAGE} component={Registration} />
                 <Route exact path={ROUTES.ABOUT_PAGE} component={AboutPage} />
+                <Route exact path={ROUTES.DIRECTIONS_PAGE} component={LandingPage} />
                 <PrivateRoute exact path={ROUTES.TRIPS_PAGE} component={TripsPage} />
                 <PrivateRoute exact path={ROUTES.PROFILE_PAGE} component={ProfilePage} />
                 <Route component={NotFound} />

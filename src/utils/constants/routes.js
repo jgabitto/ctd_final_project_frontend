@@ -6,3 +6,4 @@ export const REGISTER_PAGE = '/register';
 export const PROFILE_PAGE = '/profile';
 export const TRIPS_PAGE = '/trips';
 export const ABOUT_PAGE = '/about';
+export const DIRECTIONS_PAGE = '/ride';
