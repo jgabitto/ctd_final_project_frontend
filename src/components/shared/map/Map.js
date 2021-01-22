@@ -140,7 +140,7 @@ const Map = ({ viewport, setViewport, width, height, location }) => {
             return (
                 <>
                     <Marker
-                        key={`${journey.ride.id}_marker`}
+                        key={`${journey.ride.driver_id}_marker`}
                         latitude={journey.ride.latitude}
                         longitude={journey.ride.longitude}
                         offsetLeft={-10}

@@ -4,6 +4,7 @@ import { CaretDownOutlined } from '@ant-design/icons';
 import _ from 'lodash';
 
 import JourneyContext from '../../contexts/JourneyContext';
+import UserContext from '../../contexts/UserContext';
 import { StyledP, StyledButton, StyledDiv, StyledContainer } from './styles/styles';
 import Item from 'antd/lib/list/Item';
 
@@ -35,6 +36,7 @@ const urls =
 
 const OrderForm = () => {
   const [journey, dispatchJourney] = useContext(JourneyContext);
+  const [authToken, setAuthToken, userInfo, setUserInfo] = useContext(UserContext);
   const [drivers, setDrivers] = useState();
   const [values, setValues] = useState('');
   const [clickedDiv, setClickedDiv] = useState({});
@@ -91,10 +93,20 @@ const OrderForm = () => {
   const selectRide = () => {
     let found = drivers.find(driver => driver.id === selectedRide);
     found = { ...found, ...rideTime, ...rideDate }
-    console.log(found)
+
+    const ride = {
+      customer_id: userInfo.id,
+      driver_id: found.driver_id,
+      latitude: found.latitude,
+      longitude: found.longitude,
+      request_start_time: found.time,
+      gps_starting_point: `${journey.start.latitude}, ${journey.start.longitude}`,
+      starting_address: `${journey.start.value}`
+    }
+
     dispatchJourney({
       type: 'ride',
-      payload: { field: 'ride', value: found },
+      payload: { field: 'ride', value: ride },
     });
     setHideList(true);
   }

@@ -11,6 +11,7 @@ import NotFound from './notFound/NotFound';
 import RequestPage from './requestPage/RequestPage';
 import LandingPage from './landingPage/LandingPage';
 import LoginPage from './loginPage/Login';
+import TripsPage from './tripsPage/TripsPage';
 import ProfilePage from './profilePage/ProfilePage';
 import Registration from './registerPage/Register';
 import Connection from './connection/Connection';
@@ -35,6 +36,7 @@ const App = ({ cable }) => {
                 <Route exact path={ROUTES.LOGIN_PAGE} component={LoginPage} />
                 <Route exact path={ROUTES.REGISTER_PAGE} component={Registration} />
                 <Route exact path={ROUTES.ABOUT_PAGE} component={AboutPage} />
+                <PrivateRoute exact path={ROUTES.TRIPS_PAGE} component={TripsPage} />
                 <PrivateRoute exact path={ROUTES.PROFILE_PAGE} component={ProfilePage} />
                 <Route component={NotFound} />
               </Switch>
