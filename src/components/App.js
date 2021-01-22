@@ -6,6 +6,7 @@ import * as ROUTES from '../utils/constants/routes';
 import PrivateRoute from './shared/routes/PrivateRoute';
 import Navbar from './shared/navbar/Navbar';
 import Footer from './shared/footer/Footer';
+import AboutPage from './aboutPage/AboutPage';
 import NotFound from './notFound/NotFound';
 import RequestPage from './requestPage/RequestPage';
 import LandingPage from './landingPage/LandingPage';
@@ -33,6 +34,7 @@ const App = ({ cable }) => {
                 <Route exact path={ROUTES.REQUEST_PAGE} component={RequestPage} />
                 <Route exact path={ROUTES.LOGIN_PAGE} component={LoginPage} />
                 <Route exact path={ROUTES.REGISTER_PAGE} component={Registration} />
+                <Route exact path={ROUTES.ABOUT_PAGE} component={AboutPage} />
                 <PrivateRoute exact path={ROUTES.PROFILE_PAGE} component={ProfilePage} />
                 <Route component={NotFound} />
               </Switch>

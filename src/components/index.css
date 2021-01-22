@@ -55,6 +55,27 @@ span {
   border-radius: 10px;
   box-shadow: 7px 7px 19px -12px rgba(0, 0, 0, 0.72);
 }
+
+.about {
+  margin: 0 auto;
+  margin-top: 20px;
+  min-width: 200px;
+  max-width: 550px;
+  min-height: 10vh;
+  display: block;
+  margin-bottom: 2rem;
+  padding: 4rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 7px 7px 19px -12px rgba(0, 0, 0, 0.72);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+.about p {
+  text-align: center;
+}
+
 .form-profile {
   margin: 0 auto;
   margin-top: 20px;
@@ -118,13 +139,13 @@ nav a {
 
 nav .logo {
   display: flex;
-  width: 170px;
+  width: 100px;
   padding: 0;
 }
 
 nav .logo a {
   display: flex;
-  width: 150px;
+  width: 100px;
   padding: 0;
 
 }
@@ -165,6 +186,7 @@ nav .nav-item a {
   border: none;
   color: white;
   font-weight: 600;
+  font-size: 16px;
   padding-top: 9px;
   text-align: center;
   margin: 0;
