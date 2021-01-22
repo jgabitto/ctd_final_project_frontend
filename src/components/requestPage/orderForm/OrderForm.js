@@ -89,7 +89,8 @@ const OrderForm = () => {
   }
 
   const selectRide = () => {
-    const found = drivers.find(driver => driver.id === selectedRide);
+    let found = drivers.find(driver => driver.id === selectedRide);
+    found = { ...found, ...rideTime, ...rideDate }
     console.log(found)
     dispatchJourney({
       type: 'ride',
@@ -123,15 +124,16 @@ const OrderForm = () => {
 
   return (
     <>
-      <Card title={title()} style={{ width: 400, position: 'absolute', marginTop: '100px', padding: 0 }}>
+      <Card title={hideList ? <em><strong>Thanks for riding!</strong></em> : title()} style={hideList ? { textAlign: 'center', width: 400, position: 'absolute', marginTop: '100px', padding: 0 } : { width: 400, position: 'absolute', marginTop: '100px', padding: 0 }}>
         {
           drivers ?
             <List
-              className={hideList ? 'hide' : null}
-              style={{
-                overflow: 'auto',
-                height: '200px'
-              }}
+              style={hideList
+                ? { display: 'none' }
+                : {
+                  overflow: 'auto',
+                  height: '200px'
+                }}
               itemLayout="horizontal"
               dataSource={drivers}
               renderItem={item => {
@@ -149,11 +151,9 @@ const OrderForm = () => {
               }}
             /> : null
         }
-        {/* <div style={{ height: '50px' }}><div style={}><Button>Hello</Button></div></div> */}
         <Row>
           <Col span={12} offset={6}>
-            {/* <div style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }}> */}
-            <div style={{ margin: '10px 0' }}>
+            <div style={hideList ? { display: 'none' } : { margin: '10px 0' }}>
               <StyledButton onClick={selectRide} disabled={clickedDivTrue && rideDate && rideTime ? null : true}>Request Rideshare</StyledButton>
             </div>
             {/* </div> */}

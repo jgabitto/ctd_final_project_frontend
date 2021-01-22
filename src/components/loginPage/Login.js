@@ -6,11 +6,13 @@ import * as ROUTES from '../../utils/constants/routes';
 import { LOGIN } from '../../utils/constants/constants';
 // import ForgotPassword from './ForgotPassword';
 import UserContext from '../contexts/UserContext';
+import JourneyContext from '../contexts/JourneyContext';
 
 const Login = ({ history }) => {
   const [loginState, setLoginState] = useState({ error: null, loading: null });
   const { error, loading } = loginState;
   const [authToken, setAuthToken] = useContext(UserContext);
+  const [journey, dispatchJourney] = useContext(JourneyContext);
 
   const onFinish = async (values) => {
     const { email } = values;
@@ -24,10 +26,12 @@ const Login = ({ history }) => {
       console.log(res)
       // Check if res has jwt
       if (res.token) {
-        // 	// Update auth context with jwt
+        // Update auth context with jwt
         setAuthToken(res);
-        // 	// Switch to home page
-        history.push(`${ROUTES.HOME_PAGE}`);
+        // Switch to request page
+        if (journey.start && journey.end) return history.push(`${ROUTES.REQUEST_PAGE}`);
+        // Else switch to landing page
+        return history.push(`${ROUTES.LANDING_PAGE}`);
       } else {
         setLoginState({ error: res.info.message, loading: false });
       }
