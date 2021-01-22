@@ -100,11 +100,14 @@ const OrderForm = () => {
       driver_id: found.driver_id,
       latitude: found.latitude,
       longitude: found.longitude,
+      end_latitude: journey.end.latitude,
+      end_longitude: journey.end.longitude,
       request_start_time: found.time,
       gps_starting_point: `${journey.start.latitude}, ${journey.start.longitude}`,
-      starting_address: `${journey.start.value}`
+      starting_address: journey.start.value,
+      end_address: journey.end.value
     }
-    console.log(ride.request_start_time._d)
+    console.log(ride)
     dispatchJourney({
       type: 'ride',
       payload: { field: 'ride', value: ride },
@@ -148,7 +151,7 @@ const OrderForm = () => {
 
   return (
     <>
-      <Card title={hideList ? <em><strong>Thanks for riding!</strong></em> : title()} style={hideList ? { textAlign: 'center', width: 400, position: 'absolute', marginTop: '100px', padding: 0 } : { width: 400, position: 'absolute', marginTop: '100px', padding: 0 }}>
+      <Card title={hideList ? <em><strong>Your request has been received!</strong></em> : title()} style={hideList ? { textAlign: 'center', width: 400, position: 'absolute', marginTop: '100px', padding: 0 } : { width: 400, position: 'absolute', marginTop: '100px', padding: 0 }}>
         {
           drivers ?
             <List

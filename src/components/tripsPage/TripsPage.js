@@ -127,6 +127,11 @@ const TripsPage = () => {
           // sortOrder: sortedInfo.columnKey === 'address' && sortedInfo.order,
           // ellipsis: true,
         },
+        {
+          title: 'End Address',
+          dataIndex: 'end_address',
+          key: 'end_address'
+        }
       ]
     )
   }
@@ -137,6 +142,10 @@ const TripsPage = () => {
         data ?
           <>
             <div className="table-container">
+              <h1 style={{
+                color: 'black', marginTop: '100px',
+                marginBottom: '25px'
+              }}>Trip History</h1>
               <div className="table">
                 {/* <Space style={{ marginBottom: 16 }}>
                   <Button onClick={setAgeSort}>Sort age</Button>
@@ -148,6 +157,10 @@ const TripsPage = () => {
             </div>
           </>
           : <div className="table-container">
+            <h1 style={{
+              color: 'black', marginTop: '100px',
+              marginBottom: '25px'
+            }}>Trip History</h1>
             <div className="table">
               Sorry you do not have a trips history.
           </div>
