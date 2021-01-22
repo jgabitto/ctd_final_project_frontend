@@ -4,9 +4,9 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import * as ROUTES from '../../utils/constants/routes';
 import { LOGIN } from '../../utils/constants/constants';
-// import ForgotPassword from './ForgotPassword';
 import UserContext from '../contexts/UserContext';
 import JourneyContext from '../contexts/JourneyContext';
+import ForgotPassword from './forgotPassword/ForgotPassword';
 
 const Login = ({ history }) => {
   const [loginState, setLoginState] = useState({ error: null, loading: null });
@@ -33,10 +33,11 @@ const Login = ({ history }) => {
         // Else switch to landing page
         return history.push(`${ROUTES.LANDING_PAGE}`);
       } else {
-        setLoginState({ error: res.info.message, loading: false });
+        setLoginState({ error: 'Invalid credentials', loading: false });
       }
     } catch (e) {
       console.log(e.message);
+      setLoginState({ error: 'Invalid credentials', loading: false });
     }
   };
 
@@ -60,11 +61,6 @@ const Login = ({ history }) => {
 
   return (
     <div style={{ width: '100%', marginTop: '50px' }} className='col-4 contain'>
-      {/* <h1>
-        Welcome to CTD's School
-				<span className='span-txt'>This website is your main hub for class materials for Code the Dream’s classes.</span>
-      </h1> */}
-
       <div className='form'>
         <h2>Sign In</h2>
         {
@@ -112,7 +108,7 @@ const Login = ({ history }) => {
                 </Form.Item>
                 <Form.Item>
                   <div className='login-form-forgot'>
-                    {/* <ForgotPassword /> */}
+                    <ForgotPassword />
                   </div>
                 </Form.Item>
                 <Form.Item>
@@ -122,7 +118,7 @@ const Login = ({ history }) => {
                 </Form.Item>
               </Form>
               <div align="center" style={{ color: "red" }}>
-                {loginState.error ? loginState.error : null}
+                {error ? error : null}
               </div>
             </>
         }

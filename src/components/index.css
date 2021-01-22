@@ -55,6 +55,19 @@ span {
   border-radius: 10px;
   box-shadow: 7px 7px 19px -12px rgba(0, 0, 0, 0.72);
 }
+.form-profile {
+  margin: 0 auto;
+  margin-top: 20px;
+  min-width: 200px;
+  max-width: 380px;
+  min-height: 10vh;
+  display: block;
+  margin-bottom: 2rem;
+  padding: 4rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 7px 7px 19px -12px rgba(0, 0, 0, 0.72);
+}
 
 .login-form-forgot {
   white-space: nowrap;

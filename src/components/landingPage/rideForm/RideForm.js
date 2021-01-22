@@ -1,24 +1,18 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Button, Space } from 'antd';
 
+import * as ROUTES from '../../../utils/constants/routes';
 import SearchBar from './searchBar/SearchBar';
-import JourneyContext from '../../contexts/JourneyContext';
 import UserContext from '../../contexts/UserContext';
 
 
 const RideForm = ({ viewport, setViewport, history }) => {
-  const [journey, dispatchJourney] = useContext(JourneyContext);
   const [authToken, setAuthToken, userInfo, setUserInfo] = useContext(UserContext);
-  const [disabled, setDisabled] = useState(false);
-
-  // const disable = () => {
-  //   setTimeout(setDisabled())
-  // }
 
   const onClick = () => {
-    if (authToken) return history.push('/request');
+    if (authToken) return history.push(`${ROUTES.REQUEST_PAGE}`);
 
-    return history.push('/login');
+    return history.push(`${ROUTES.LOGIN_PAGE}`);
   }
 
   return (
@@ -28,11 +22,11 @@ const RideForm = ({ viewport, setViewport, history }) => {
         <SearchBar viewport={viewport} setViewport={setViewport} />
         <Space>
           <Button type="primary" onClick={onClick}>
-            Request now
+            Request a ride
         </Button>
-          <Button type="primary" htmlType="submit">
+          {/* <Button type="primary" htmlType="submit">
             Schedule for later
-        </Button>
+        </Button> */}
         </Space>
       </div>
     </div>

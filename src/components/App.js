@@ -10,6 +10,7 @@ import NotFound from './notFound/NotFound';
 import RequestPage from './requestPage/RequestPage';
 import LandingPage from './landingPage/LandingPage';
 import LoginPage from './loginPage/Login';
+import ProfilePage from './profilePage/ProfilePage';
 import Registration from './registerPage/Register';
 import Connection from './connection/Connection';
 import { ConnectionStore } from './contexts/ConnectionContext';
@@ -32,9 +33,8 @@ const App = ({ cable }) => {
                 <Route exact path={ROUTES.REQUEST_PAGE} component={RequestPage} />
                 <Route exact path={ROUTES.LOGIN_PAGE} component={LoginPage} />
                 <Route exact path={ROUTES.REGISTER_PAGE} component={Registration} />
+                <PrivateRoute exact path={ROUTES.PROFILE_PAGE} component={ProfilePage} />
                 <Route component={NotFound} />
-                {/* <Route path={ROUTES.HOME_PAGE} component={} /> */}
-                {/* <Connection cableApp={cableApp} /> */}
               </Switch>
               <Footer />
             </JourneyStore>
