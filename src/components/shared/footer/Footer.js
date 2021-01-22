@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from 'react-router-dom';
 import { SlackOutlined, GithubOutlined } from "@ant-design/icons";
 
-import { FooterBottom, Copyright, Icon, FooterLinks } from '../../landingPage/styles/styles';
+import { FooterBottom, Copyright, Icon, FooterLinks } from './styles/styles';
 import ctd from "../../../utils/graphics/ctd.png";
 
 const Footer = ({ location }) => {
