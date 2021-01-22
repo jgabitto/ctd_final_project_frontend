@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Form, Input, Button } from 'antd';
+import _ from 'lodash';
 
 import UserContext from '../contexts/UserContext';
 import ForgotPassword from '../loginPage/forgotPassword/ForgotPassword';
@@ -9,6 +10,8 @@ const ProfilePage = () => {
 
   const onFinish = (values) => {
     console.log('Success:', values);
+    values = _.pickBy(values, _.identity);
+    console.log(values);
   };
 
   const onFinishFailed = (errorInfo) => {

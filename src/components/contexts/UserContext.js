@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import _ from 'lodash';
 
-import { LOGIN } from '../../utils/constants/constants';
+import { USER } from '../../utils/constants/constants';
 
 const Context = React.createContext();
 
@@ -26,12 +26,11 @@ export const UserStore = ({ children }) => {
   useEffect(() => {
     if (!_.isEmpty(cookies)) {
       const getData = async () => {
-        const response = await fetch(LOGIN, {
-          method: 'POST',
+        const response = await fetch(USER, {
+          method: 'GET',
           mode: 'cors',
           credentials: 'include',
-          body: JSON.stringify({ token: authToken }),
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 'Content-Type': 'application/json', 'Authorization': `${authToken}` }
         });
         const data = await response.json();
 
