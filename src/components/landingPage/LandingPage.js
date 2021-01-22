@@ -42,15 +42,15 @@ const LandingPage = ({ history, location }) => {
     // )
     return (
         <>
-            {/* <Section> */}
-            <Main>
-                {/* <LandingPageTabs /> */}
-                <RideForm history={history} viewport={viewport} setViewport={setViewport} />
-                <div className="contain">
-                    <Map location={location} viewport={viewport} setViewport={setViewport} />
-                </div>
-            </Main>
-            {/* </Section> */}
+            <Section>
+                <Main>
+                    {/* <LandingPageTabs /> */}
+                    <RideForm history={history} viewport={viewport} setViewport={setViewport} />
+                    <div className="contain">
+                        <Map location={location} viewport={viewport} setViewport={setViewport} />
+                    </div>
+                </Main>
+            </Section>
         </>
     );
 }

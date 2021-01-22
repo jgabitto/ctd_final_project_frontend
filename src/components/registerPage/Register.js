@@ -3,6 +3,7 @@ import { Tabs } from 'antd';
 
 import * as ROUTES from '../../utils/constants/routes';
 import { LOGIN } from '../../utils/constants/constants';
+import { Section } from './styles/styles';
 // import ForgotPassword from './ForgotPassword';
 import UserContext from '../contexts/UserContext';
 import RiderRegister from './riderRegister/RiderRegister';
@@ -58,37 +59,40 @@ const Register = ({ history }) => {
   }
 
   return (
-    <div style={{ width: '100%', marginTop: '50px' }} className='col-4 contain'>
-      {/* <h1>
+    <Section>
+      <div style={{ width: '100%', marginTop: '50px' }} className='col-4 contain'>
+        {/* <h1>
         Welcome to CTD's School
 				<span className='span-txt'>This website is your main hub for class materials for Code the Dream’s classes.</span>
       </h1> */}
 
-      <div className='form'>
-        <Tabs defaultActiveKey="1" centered>
-          {/* <h2>Sign In</h2> */}
-          {
-            authToken ?
-              <div>
-                You are signed in
+        <div className='form'>
+          <h2>Register</h2>
+          <Tabs defaultActiveKey="1" centered>
+            {/* <h2>Sign In</h2> */}
+            {
+              authToken ?
+                <div>
+                  You are signed in
 				      </div>
-              :
-              <>
-                <TabPane tab="Let's ride" key="1">
-                  <div className='col-10 mx-auto'>
-                    <RiderRegister loading={loading} loginState={loginState} error={error} onFinish={onFinish} fetchData={fetchData} />
-                  </div>
-                </TabPane>
-                <TabPane tab="Let's drive" key="2">
-                  <div className='col-10 mx-auto'>
-                    <DriverRegister loading={loading} loginState={loginState} error={error} onFinish={onFinish} fetchData={fetchData} />
-                  </div>
-                </TabPane>
-              </>
-          }
-        </Tabs>
+                :
+                <>
+                  <TabPane tab="Let's ride" key="1">
+                    <div className='col-10 mx-auto'>
+                      <RiderRegister loading={loading} loginState={loginState} error={error} onFinish={onFinish} fetchData={fetchData} />
+                    </div>
+                  </TabPane>
+                  <TabPane tab="Let's drive" key="2">
+                    <div className='col-10 mx-auto'>
+                      <DriverRegister loading={loading} loginState={loginState} error={error} onFinish={onFinish} fetchData={fetchData} />
+                    </div>
+                  </TabPane>
+                </>
+            }
+          </Tabs>
+        </div>
       </div>
-    </div>
+    </Section>
   );
 };
 export default Register;

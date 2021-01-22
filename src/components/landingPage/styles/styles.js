@@ -13,10 +13,10 @@ export const Section = styled.div`
   flex-basis:auto;
   flex-shrink:0;
   flex-flow: row;
-//   background-image: url('./images/background.png');
-//   background-position: top;
-//   background-repeat: no-repeat;
-//   background-size: cover;
+  background-image: url('https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_824,h_550/v1554854756/assets/74/0853d5-80e4-414a-91d7-6fd0b15a136d/original/UberIM_20250-medium-%282%29.jpg');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
 //   background-attachment: fixed;
 `;
 
