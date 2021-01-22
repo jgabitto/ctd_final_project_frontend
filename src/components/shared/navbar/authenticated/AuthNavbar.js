@@ -39,6 +39,9 @@ const AuthNavbar = ({ history, open, setOpen, userInfo }) => {
               <div className="nav-item"><Link to={ROUTES.ABOUT_PAGE}>About</Link></div>
             </li>
             <li>
+              <div className="nav-item"><Link to={ROUTES.DIRECTIONS_PAGE}>Ride</Link></div>
+            </li>
+            <li>
               <div className="nav-item">
                 <Dropdown overlay={menu}>
                   <Link to="#">{userInfo ? userInfo.first_name : null}
