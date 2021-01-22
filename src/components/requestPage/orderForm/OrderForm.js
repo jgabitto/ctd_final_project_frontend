@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { List, Avatar, Card, Button, Row, Col } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
+import _ from 'lodash';
 
 import JourneyContext from '../../contexts/JourneyContext';
-import { StyledP, StyledButton } from './styles/styles';
+import { StyledP, StyledButton, StyledDiv, StyledContainer } from './styles/styles';
+import Item from 'antd/lib/list/Item';
 
 const data = [
   {
@@ -35,6 +37,7 @@ const OrderForm = () => {
   const [journey, dispatchJourney] = useContext(JourneyContext);
   const [drivers, setDrivers] = useState();
   const [values, setValues] = useState('');
+  const [clickedDiv, setClickedDiv] = useState({});
 
 
   // const onSelect = (data) => {
@@ -56,25 +59,38 @@ const OrderForm = () => {
         return [...acc, { ...curr.user.driver.cars[0], latitude: curr.latitude, longitude: curr.longitude, location: curr.location }];
       }, []);
       setDrivers(data);
+
+      const ids = data.reduce((acc, curr) => {
+        return { ...acc, [curr.id]: false }
+      }, {})
+
+      setClickedDiv(ids);
     }
   }, [journey])
 
-  const onClick = (value) => {
-    console.log({ [value]: values[value] })
+  const onClickLocation = (value) => {
     setValues(prevState => {
       return { ...prevState, ...{ [value]: values[value] } }
+    })
+  }
+
+  const onClickDiv = (value) => {
+    setClickedDiv(prevState => {
+      let newObj = { ...prevState };
+      newObj = _.mapValues(newObj, () => false);
+      return { ...newObj, [value]: true };
     })
   }
 
   const title = () => {
     return (
       <>
-        <StyledP onClick={() => onClick('start')}>From {values.start} <CaretDownOutlined /></StyledP>
-        <StyledP onClick={() => onClick('end')}>To {values.end} <CaretDownOutlined /></StyledP>
+        <StyledP onClick={() => onClickLocation('start')}>From {values.start} <CaretDownOutlined /></StyledP>
+        <StyledP onClick={() => onClickLocation('end')}>To {values.end} <CaretDownOutlined /></StyledP>
       </>
     )
   }
-  console.log(drivers)
+
   return (
     <>
       <Card title={title()} style={{ width: 400, position: 'absolute', marginTop: '100px', padding: 0 }}>
@@ -87,15 +103,19 @@ const OrderForm = () => {
               }}
               itemLayout="horizontal"
               dataSource={drivers}
-              renderItem={item => (
-                <List.Item>
-                  <List.Item.Meta
-                    avatar={<Avatar size={75} src={urls[item.car_type]} />}
-                    title={item.car_type}
-                    description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                  />
-                </List.Item>
-              )}
+              renderItem={item => {
+                return (
+                  <StyledContainer>
+                    <List.Item onClick={() => onClickDiv(item.id)} className={clickedDiv[item.id] ? 'clicked' : null}>
+                      <List.Item.Meta
+                        avatar={<Avatar size={75} src={urls[item.car_type]} />}
+                        title={item.car_type}
+                        description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                      />
+                    </List.Item >
+                  </StyledContainer>
+                )
+              }}
             /> : null
         }
         {/* <div style={{ height: '50px' }}><div style={}><Button>Hello</Button></div></div> */}

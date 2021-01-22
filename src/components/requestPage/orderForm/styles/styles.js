@@ -40,3 +40,27 @@ export const StyledButton = styled.button`
     opacity: 0.8;
   }
 `;
+
+export const StyledDiv = styled.div`
+  :hover {
+    cursor: pointer;
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+    background-color: rgba(122, 122, 122, 0.1);
+  }
+  
+
+`;
+export const StyledContainer = styled.div`
+  :not(.clicked):hover {
+    cursor: pointer;
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+    background-color: rgba(122, 122, 122, 0.1);
+  }
+  
+  .clicked {
+    background-color: rgb(224, 235, 255);
+  }
+
+`;
