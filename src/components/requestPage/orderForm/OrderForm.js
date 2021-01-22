@@ -34,6 +34,16 @@ const urls =
   'sedan': 'https://d3i4yxtzktqr9n.cloudfront.net/hulk/09e8f38cfd86e553f06a6dfd121aec0e.png',
   'hatchback': 'https://d3i4yxtzktqr9n.cloudfront.net/hulk/09e8f38cfd86e553f06a6dfd121aec0e.png'
 }
+const urls2 =
+{
+  'suv': "Just like your mom's old van. Oh isn't nostalgia great?",
+  'van': "Just like your mom's old van. Oh isn't nostalgia great?",
+  'sports': "This car is the fastest car ever created. You have been warned.",
+  'luxury': "This car is so fancy that it comes with truffles and jeff bezos.",
+  'coupe': "Just like your dad's old car. Oh good times.",
+  'sedan': "Nothing to be said about this.",
+  'hatchback': "This speeddemon is faster than you think."
+}
 
 const OrderForm = () => {
   const [journey, dispatchJourney] = useContext(JourneyContext);
@@ -170,7 +180,7 @@ const OrderForm = () => {
                       <List.Item.Meta
                         avatar={<Avatar size={75} src={urls[item.car_type]} />}
                         title={item.car_type}
-                        description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                        description={urls2[item.car_type]}
                       />
                     </List.Item >
                   </StyledContainer>
