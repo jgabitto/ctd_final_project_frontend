@@ -67,7 +67,6 @@ export const Copyright = styled.div`
     justify-content: flex-end;
     align-items: center;
     padding-left: 20px;
-    text-transform: uppercase;
     font-size: 0.8rem;
     span {
         padding-top: 0px;

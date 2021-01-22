@@ -3,32 +3,28 @@ import { withRouter } from 'react-router-dom';
 import { SlackOutlined, GithubOutlined } from "@ant-design/icons";
 
 import { FooterBottom, Copyright, Icon, FooterLinks } from '../../landingPage/styles/styles';
+import ctd from "../../../utils/graphics/ctd.png";
 
 const Footer = ({ location }) => {
   return (
     <>
       <FooterBottom style={location.pathname === '/request' ? { position: 'fixed', bottom: 0 } : null}>
         <Copyright>
-          Copyright © Code the Dream · All Rights Reserved
-                </Copyright>
+          Copyright © RideShare · All Rights Reserved
+        </Copyright>
         <Icon>
           <FooterLinks
             href="https://www.codethedream.org/"
             target="_blank">
-            {/* <img src={ctd} alt="Code The Cream"></img> */}
+            <img src={ctd} alt="Code The Cream"></img>
           </FooterLinks>
           <FooterLinks
-            href="https://teamtreehouse.com/home"
+            href="https://github.com/jgabitto/ctd_final_project"
             target="_blank">
-            {/* <img src={treehouse} alt="Team Treehouse"></img> */}
+            <GithubOutlined />
           </FooterLinks>
           <FooterLinks
-            href="https://app.slack.com/client/T07EHJ738/learning-slack"
-            target="_blank">
-            <SlackOutlined />
-          </FooterLinks>
-          <FooterLinks
-            href="https://github.com/Code-the-Dream-School?type=source"
+            href="https://github.com/jgabitto/ctd_final_project_frontend"
             target="_blank">
             <GithubOutlined />
           </FooterLinks>
