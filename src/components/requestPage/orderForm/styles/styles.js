@@ -39,6 +39,12 @@ export const StyledButton = styled.button`
   :hover {
     opacity: 0.8;
   }
+
+  :disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
 `;
 
 export const StyledDiv = styled.div`

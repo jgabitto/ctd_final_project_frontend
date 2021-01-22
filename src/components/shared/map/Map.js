@@ -80,14 +80,6 @@ const Map = ({ viewport, setViewport, width, height, location }) => {
 
     console.log(journey)
 
-    // const handleConnected = (message) => {
-    //     console.log('connected')
-    // }
-
-    // const handleReceived = (message) => {
-    //     console.log(message)
-    // }
-
     const renderMarkers = () => {
         let address;
         return Object.keys(journey).map((key) => {
@@ -143,6 +135,22 @@ const Map = ({ viewport, setViewport, width, height, location }) => {
     }
 
     const renderDrivers = () => {
+        if (journey.ride) {
+            console.log(journey.ride)
+            return (
+                <>
+                    <Marker
+                        key={`${journey.ride.id}_marker`}
+                        latitude={journey.ride.latitude}
+                        longitude={journey.ride.longitude}
+                        offsetLeft={-10}
+                        offsetTop={-25}
+                    >
+                        <svg width="36px" height="36px" viewBox="0 0 24 24"><path d="M3 18v-5a2 2 0 0 1 2-2V8a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v3a2 2 0 0 1 2 2v5a2 2 0 1 1-4 0H7a2 2 0 1 1-4 0zM9 6a2 2 0 0 0-2 2v3h10V8a2 2 0 0 0-2-2H9zm-3 9a1 1 0 1 0 0-2a1 1 0 0 0 0 2zm12 0a1 1 0 1 0 0-2a1 1 0 0 0 0 2z" fill="black" /><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" /></svg>
+                    </Marker>
+                </>
+            )
+        }
         return journey.drivers.map((driver) => {
             return (
                 <>
@@ -159,7 +167,7 @@ const Map = ({ viewport, setViewport, width, height, location }) => {
             )
         })
     }
-    console.log(location)
+
     return (
         <>
             {

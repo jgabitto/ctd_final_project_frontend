@@ -13,7 +13,6 @@ const LandingPage = ({ history, location }) => {
     const [viewport, setViewport] = useContext(ViewportContext);
     const [journey, dispatchJourney] = useContext(JourneyContext);
 
-    console.log(viewport);
     useEffect(() => {
         dispatchJourney({
             type: "all",

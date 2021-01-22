@@ -38,6 +38,8 @@ const OrderForm = () => {
   const [drivers, setDrivers] = useState();
   const [values, setValues] = useState('');
   const [clickedDiv, setClickedDiv] = useState({});
+  const [clickedDivTrue, setClickedDivTrue] = useState(false);
+  const [selectedRide, setSelectedRide] = useState(null);
 
 
   // const onSelect = (data) => {
@@ -80,6 +82,17 @@ const OrderForm = () => {
       newObj = _.mapValues(newObj, () => false);
       return { ...newObj, [value]: true };
     })
+    setClickedDivTrue(true);
+    setSelectedRide(value)
+  }
+
+  const selectRide = () => {
+    const found = drivers.find(driver => driver.id === selectedRide);
+    console.log(found)
+    dispatchJourney({
+      type: 'ride',
+      payload: { field: 'ride', value: found },
+    });
   }
 
   const title = () => {
@@ -90,6 +103,8 @@ const OrderForm = () => {
       </>
     )
   }
+
+  console.log(drivers)
 
   return (
     <>
@@ -123,7 +138,7 @@ const OrderForm = () => {
           <Col span={12} offset={6}>
             {/* <div style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }}> */}
             <div style={{ margin: '10px 0' }}>
-              <StyledButton className="">Request Rideshare</StyledButton>
+              <StyledButton onClick={selectRide} disabled={clickedDivTrue ? null : true}>Request Rideshare</StyledButton>
             </div>
             {/* </div> */}
           </Col>
