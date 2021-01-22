@@ -46,7 +46,7 @@ const LandingPage = ({ history, location }) => {
                 <Main>
                     {/* <LandingPageTabs /> */}
                     <RideForm history={history} viewport={viewport} setViewport={setViewport} />
-                    <div className="contain">
+                    <div className="map">
                         <Map location={location} viewport={viewport} setViewport={setViewport} />
                     </div>
                 </Main>

@@ -16,6 +16,20 @@ span {
   bottom: 30px;
 }
 
+.map {
+  z-index: 1;
+  position: relative;
+  display: block;
+  width: 35%;
+  padding-left: 180px;
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  bottom: 30px;
+}
+
 .contain h1 {
   text-align: center;
   font-size: 3rem;
