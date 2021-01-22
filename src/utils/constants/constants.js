@@ -4,4 +4,5 @@ export const MAPBOX_SEARCH_PARAMS = ".json?access_token=";
 export const MAPBOX_DIRECTIONS_PARAMS = "?alternatives=true&geometries=geojson&steps=true&access_token=";
 export const LOGIN = "https://ctd-final-project.herokuapp.com/api/v1/login";
 export const USER = "https://ctd-final-project.herokuapp.com/api/v1/user";
+export const UPDATE = "https://ctd-final-project.herokuapp.com/api/v1/update";
 export const LOGOUT = "https://localhost:3000/logout";
