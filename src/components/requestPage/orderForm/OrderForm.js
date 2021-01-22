@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { List, Avatar, Card, Button, Row, Col } from 'antd';
+import { List, Avatar, Card, DatePicker, TimePicker, Row, Col } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
 import _ from 'lodash';
 
@@ -40,7 +40,9 @@ const OrderForm = () => {
   const [clickedDiv, setClickedDiv] = useState({});
   const [clickedDivTrue, setClickedDivTrue] = useState(false);
   const [selectedRide, setSelectedRide] = useState(null);
-
+  const [hideList, setHideList] = useState(null);
+  const [rideTime, setRideTime] = useState(null);
+  const [rideDate, setRideDate] = useState(null);
 
   // const onSelect = (data) => {
   //   console.log('onSelect', data);
@@ -93,6 +95,17 @@ const OrderForm = () => {
       type: 'ride',
       payload: { field: 'ride', value: found },
     });
+    setHideList(true);
+  }
+
+  const onChangeDate = (date, dateString) => {
+    console.log(date, dateString);
+    setRideDate({ date: date, dateString: dateString })
+  }
+
+  const onChangeTime = (time, timeString) => {
+    console.log(time, timeString);
+    setRideTime({ time: time, timeString: timeString })
   }
 
   const title = () => {
@@ -100,6 +113,8 @@ const OrderForm = () => {
       <>
         <StyledP onClick={() => onClickLocation('start')}>From {values.start} <CaretDownOutlined /></StyledP>
         <StyledP onClick={() => onClickLocation('end')}>To {values.end} <CaretDownOutlined /></StyledP>
+        <DatePicker onChange={onChangeDate} />
+        <TimePicker use12Hours format="h:mm a" onChange={onChangeTime} />
       </>
     )
   }
@@ -112,6 +127,7 @@ const OrderForm = () => {
         {
           drivers ?
             <List
+              className={hideList ? 'hide' : null}
               style={{
                 overflow: 'auto',
                 height: '200px'
@@ -138,7 +154,7 @@ const OrderForm = () => {
           <Col span={12} offset={6}>
             {/* <div style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }}> */}
             <div style={{ margin: '10px 0' }}>
-              <StyledButton onClick={selectRide} disabled={clickedDivTrue ? null : true}>Request Rideshare</StyledButton>
+              <StyledButton onClick={selectRide} disabled={clickedDivTrue && rideDate && rideTime ? null : true}>Request Rideshare</StyledButton>
             </div>
             {/* </div> */}
           </Col>

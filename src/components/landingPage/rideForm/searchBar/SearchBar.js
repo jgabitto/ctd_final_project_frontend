@@ -28,6 +28,7 @@ const SearchBar = ({ viewport, setViewport }) => {
     if (searchText) {
       const res = await fetch(`${MAPBOX_GEOCODING_URL}/${searchText}${MAPBOX_SEARCH_PARAMS}${process.env.REACT_APP_MAPBOX_TOKEN}`)
       const { features } = await res.json();
+
       cities = features.reduce((acc, curr) => [...acc, { id: curr.id, value: curr.place_name, longitude: curr.center[0], latitude: curr.center[1] }], [])
 
       setValues(cities);
