@@ -3,6 +3,7 @@ import { List, Avatar, Card, DatePicker, TimePicker, Row, Col } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
 import _ from 'lodash';
 
+import { REQUEST_RIDE } from '../../../utils/constants/constants';
 import JourneyContext from '../../contexts/JourneyContext';
 import UserContext from '../../contexts/UserContext';
 import { StyledP, StyledButton, StyledDiv, StyledContainer } from './styles/styles';
@@ -90,12 +91,12 @@ const OrderForm = () => {
     setSelectedRide(value)
   }
 
-  const selectRide = () => {
+  const selectRide = async () => {
     let found = drivers.find(driver => driver.id === selectedRide);
     found = { ...found, ...rideTime, ...rideDate }
 
     const ride = {
-      customer_id: userInfo.id,
+      user_id: userInfo.id,
       driver_id: found.driver_id,
       latitude: found.latitude,
       longitude: found.longitude,
@@ -103,11 +104,22 @@ const OrderForm = () => {
       gps_starting_point: `${journey.start.latitude}, ${journey.start.longitude}`,
       starting_address: `${journey.start.value}`
     }
-
+    console.log(ride.request_start_time._d)
     dispatchJourney({
       type: 'ride',
       payload: { field: 'ride', value: ride },
     });
+
+    const data = await fetch(REQUEST_RIDE, {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'include',
+      body: JSON.stringify(ride),
+      headers: { 'Content-Type': 'application/json', 'Authorization': `${authToken}` }
+    });
+
+    const res = await data.json();
+
     setHideList(true);
   }
 

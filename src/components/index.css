@@ -15,6 +15,18 @@ span {
   align-items: center;
   bottom: 30px;
 }
+.table-container {
+  z-index: 1;
+  position: relative;
+  display: block;
+  padding: 30px;
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  bottom: 30px;
+}
 
 .map {
   z-index: 1;
@@ -61,6 +73,20 @@ span {
   margin-top: 20px;
   min-width: 200px;
   max-width: 350px;
+  min-height: 10vh;
+  display: block;
+  margin-bottom: 2rem;
+  padding: 4rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 7px 7px 19px -12px rgba(0, 0, 0, 0.72);
+}
+
+.table {
+  margin: 0 auto;
+  margin-top: 100px;
+  min-width: 350px;
+  max-width: 700px;
   min-height: 10vh;
   display: block;
   margin-bottom: 2rem;

@@ -5,4 +5,6 @@ export const MAPBOX_DIRECTIONS_PARAMS = "?alternatives=true&geometries=geojson&s
 export const LOGIN = "https://ctd-final-project.herokuapp.com/api/v1/login";
 export const USER = "https://ctd-final-project.herokuapp.com/api/v1/user";
 export const UPDATE = "https://ctd-final-project.herokuapp.com/api/v1/update";
+export const REQUEST_RIDE = "https://ctd-final-project.herokuapp.com/api/v1/request";
+export const GET_RIDES = "https://ctd-final-project.herokuapp.com/api/v1/rides";
 export const LOGOUT = "https://localhost:3000/logout";
