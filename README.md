@@ -30,11 +30,11 @@ Inspired by Uber, Lyft and other rideshare cooperatives, I decided to create a r
 
 The different facets of RideShare app for Users:
 
-- Users can see navigation of routes they desire
-- Users can see available drivers in their area
-- Users can book rides from drivers in their vicinity
-- Users are able to track in real-time their booked driver
-- Users can track trip in real-time 
+- Can see navigation of routes they desire
+- Can see available drivers in their area
+- Can book rides from drivers in their vicinity
+- Are able to track in real-time their booked driver
+- Can track trip in real-time 
 
 These were some of the facets I wanted to incorporate into this app as they would mimic some of the major features of popular RideShare apps. 
 
