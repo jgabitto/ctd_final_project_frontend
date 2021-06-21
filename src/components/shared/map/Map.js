@@ -21,28 +21,6 @@ const Map = ({ viewport, setViewport, width, height, location }) => {
         })
     }, [])
 
-    // useEffect(() => {
-    //     const getLocations = async () => {
-    //         const values = await listLogEntries();
-    //         console.log(values)
-    //         setLocations(values)
-    //     }
-    //     getLocations();
-    // }, [])
-
-    // useEffect(() => {
-    //     navigator.geolocation.watchPosition(data => {
-    //         console.log(data)
-    //         setCurrentLocation(prevState => {
-    //             if (prevState) {
-    //                 return [...prevState, { lat: data.coords.latitude, lon: data.coords.longitude }]
-    //             }
-    //             return [{ lat: data.coords.latitude, lon: data.coords.longitude }]
-    //         })
-    //     }, error => console.log(error), { enableHighAccuracy: true })
-    // }, [])
-
-
     useEffect(() => {
         const getDirections = async () => {
             let zoom;
@@ -77,8 +55,6 @@ const Map = ({ viewport, setViewport, width, height, location }) => {
             getDirections();
         }
     }, [journey.start, journey.end])
-
-    console.log(journey)
 
     const renderMarkers = () => {
         let address;
