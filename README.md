@@ -26,7 +26,7 @@
 
 ## About The Project
 
-Inspired by Uber, Lyft and other rideshare cooperatives, I decided to create a rideshare app that allows users to book rides and track in real-time the arrival of their driver and the duration of their trip. This was an exciting project to do as their were a variety of components that I needed to consider when making a rideshare app.
+Inspired by Uber, Lyft and other rideshare cooperatives, I decided to create a rideshare app that allows users to book rides and track in real-time the arrival of their driver and the duration of their trip. The frontend was made using React and AntDesign and the backend was made using Rails and Postgres. The app's geocoding and navigation feature was made possible through Mapbox's API. This was an exciting project to do as their were a variety of components that I needed to consider when making a rideshare app.
 
 The different facets of RideShare app for Users:
 
@@ -36,7 +36,7 @@ The different facets of RideShare app for Users:
 - Users are able to track in real-time their booked driver
 - Users can track trip in real-time 
 
-These were some of the facets I wanted to incorporate into this app as they would mimic some of the major features of popular RideShare apps.
+These were some of the facets I wanted to incorporate into this app as they would mimic some of the major features of popular RideShare apps. 
 
 I would love for this app to work seamlessly on mobile devices so a mobile version will be released in the future!
 
@@ -49,6 +49,7 @@ This section should list any major frameworks that you built your project using.
 - [PostgreSQL](https://www.postgresql.org/)
 - [Action Cable](https://guides.rubyonrails.org/action_cable_overview.html)
 - [Ant Design](https://ant.design/)
+- [Mapbox API](https://www.mapbox.com/)
 
 <!-- GETTING STARTED -->
 
