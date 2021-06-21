@@ -26,60 +26,54 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+Inspired by Uber, Lyft and other rideshare cooperatives, I decided to create a rideshare app that allows users to book rides and track in real-time the arrival of their driver and the duration of their trip. This was an exciting project to do as their were a variety of components that I needed to consider when making a rideshare app.
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+The different facets of RideShare app for Users:
 
-Here's why:
+- Users can see navigation of routes they desire
+- Users can see available drivers in their area
+- Users can book rides from drivers in their vicinity
+- Users are able to track in real-time their booked driver
+- Users can track trip in real-time 
 
-- Your time should be focused on creating something amazing. A project that solves a problem and helps others
-- You shouldn't be doing the same tasks over and over like creating a README from scratch
-- You should element DRY principles to the rest of your life :smile:
+These were some of the facets I wanted to incorporate into this app as they would mimic some of the major features of popular RideShare apps.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+I would love for this app to work seamlessly on mobile devices so a mobile version will be released in the future!
 
 ### Built With
 
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-- [Bootstrap](https://getbootstrap.com)
-- [JQuery](https://jquery.com)
-- [Laravel](https://laravel.com)
+- [React](https://reactjs.org/)
+- [Rails](https://rubyonrails.org/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Action Cable](https://guides.rubyonrails.org/action_cable_overview.html)
+- [Ant Design](https://ant.design/)
 
 <!-- GETTING STARTED -->
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+List of things you need to run RideShare locally
 
 - npm
-  ```sh
+```sh
   npm install npm@latest -g
   ```
-
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
 <!-- LICENSE -->
 
 ## License
@@ -90,6 +84,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Jorge G.
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [RideShare](https://github.com/jgabitto/ctd_final_project_frontend#about-the-project)
