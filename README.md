@@ -42,7 +42,7 @@ I would love for this app to work seamlessly on mobile devices so a mobile versi
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+Listed below are frameworks, dependencies and api's that were used for this project:
 
 - [React](https://reactjs.org/)
 - [Rails](https://rubyonrails.org/)
